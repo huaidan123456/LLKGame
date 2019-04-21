@@ -1,7 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08fc46eb-2108-4304-b576-347b4578ff8a" name="Default" comment="" />
+    <list default="true" id="08fc46eb-2108-4304-b576-347b4578ff8a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Classes/GameDelegate/ALGameFriendInfoModel.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Classes/GameDelegate/ALGameFriendInfoModel.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Resources/images/afll_cell_txtState_noLine.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/IphoneX/csbFile/ALNiangCardInfoLayer.csb" afterPath="$PROJECT_DIR$/Resources/IphoneX/csbFile/ALNiangCardInfoLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/IphoneX/csbFile/GameLayer.csb" afterPath="$PROJECT_DIR$/Resources/IphoneX/csbFile/GameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/IphoneX/csbFile/GameRulesLayer.csb" afterPath="$PROJECT_DIR$/Resources/IphoneX/csbFile/GameRulesLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/IphoneX/csbFile/StartGameLayer.csb" afterPath="$PROJECT_DIR$/Resources/IphoneX/csbFile/StartGameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/ALFriendCellNode.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/ALFriendCellNode.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/ALFriendsListLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/ALFriendsListLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/ALNiangCardInfoLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/ALNiangCardInfoLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/GameLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/GameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/GameRulesLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/GameRulesLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/InviteeAlertLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/InviteeAlertLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/InviterAlertLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/InviterAlertLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/csbFile/StartGameLayer.csb" afterPath="$PROJECT_DIR$/Resources/csbFile/StartGameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/afll_cellBg.png" afterPath="$PROJECT_DIR$/Resources/images/afll_cellBg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/afll_cell_headKuang.png" afterPath="$PROJECT_DIR$/Resources/images/afll_cell_headKuang.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/afll_cell_headMask.png" afterPath="$PROJECT_DIR$/Resources/images/afll_cell_headMask.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/definedHead.png" afterPath="$PROJECT_DIR$/Resources/images/definedHead.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/definedHead_100.png" afterPath="$PROJECT_DIR$/Resources/images/definedHead_100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/definedHead_220.png" afterPath="$PROJECT_DIR$/Resources/images/definedHead_220.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/gol_btn_btm_leave.png" afterPath="$PROJECT_DIR$/Resources/images/gol_btn_btm_leave.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/gol_definedHead_s.png" afterPath="$PROJECT_DIR$/Resources/images/gol_definedHead_s.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/icon_boom_animationBg.png" afterPath="$PROJECT_DIR$/Resources/images/icon_boom_animationBg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/mgs_background.png" afterPath="$PROJECT_DIR$/Resources/images/mgs_background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/images/msl_definedHead_pps.png" afterPath="$PROJECT_DIR$/Resources/images/msl_definedHead_pps.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/debug/android/LLKGame-debug.apk" afterPath="$PROJECT_DIR$/bin/debug/android/LLKGame-debug.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/csbFile/StartGameLayer.csb" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/csbFile/StartGameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/grl_bg.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/grl_bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/gs_bg.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/gs_bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/mgs_background.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/mgs_background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/msl_bg.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/IphoneX/images/msl_bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/ALNiangCardInfoLayer.csb" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/ALNiangCardInfoLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/GameLayer.csb" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/GameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/GameRulesLayer.csb" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/GameRulesLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/StartGameLayer.csb" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/csbFile/StartGameLayer.csb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/images/background_BTM.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/images/background_BTM.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/images/gol_btn_btm_leave.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/images/gol_btn_btm_leave.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/images/icon_boom_animationBg.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/images/icon_boom_animationBg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/assets/images/icon_selected_kuang.png" afterPath="$PROJECT_DIR$/proj.android-studio/app/assets/images/icon_selected_kuang.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/libs/armeabi/libcocos2dcpp.so" afterPath="$PROJECT_DIR$/proj.android-studio/app/libs/armeabi/libcocos2dcpp.so" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/libcocos2dcpp.so" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/libcocos2dcpp.so" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALAlertUtil.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALAlertUtil.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALBNSocketUitl.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALBNSocketUitl.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALDrawNiangCardLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALDrawNiangCardLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALImageView.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALImageView.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALMusicUtil.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALMusicUtil.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNetControl.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNetControl.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoShowLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoShowLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardShowLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardShowLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALPlayerData.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALPlayerData.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserInfoModel.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserInfoModel.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALWebImageUtil.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALWebImageUtil.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/AppDelegate.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/AppDelegate.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameOverLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameOverLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/IconSprite.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/IconSprite.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/MatchSuccessLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/MatchSuccessLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ReadyGameLayer.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ReadyGameLayer.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/project.xcworkspace/xcuserdata/allen.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/project.xcworkspace/xcuserdata/allen.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALAlertUtil.cpp" afterPath="$PROJECT_DIR$/Classes/ALAlertUtil.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALAlertUtil.h" afterPath="$PROJECT_DIR$/Classes/ALAlertUtil.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALBNSocketUitl.cpp" afterPath="$PROJECT_DIR$/Classes/ALBNSocketUitl.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALDrawNiangCardLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ALDrawNiangCardLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALDrawNiangCardLayer.h" afterPath="$PROJECT_DIR$/Classes/ALDrawNiangCardLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameFriendCellNode.cpp" afterPath="$PROJECT_DIR$/Classes/ALGameFriendCellNode.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameFriendsListLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ALGameFriendsListLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameFriendsListLayer.h" afterPath="$PROJECT_DIR$/Classes/ALGameFriendsListLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameInviteeAlertLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ALGameInviteeAlertLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameInviteeAlertLayer.h" afterPath="$PROJECT_DIR$/Classes/ALGameInviteeAlertLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameInviterAlertLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ALGameInviterAlertLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALGameInviterAlertLayer.h" afterPath="$PROJECT_DIR$/Classes/ALGameInviterAlertLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALImageView.cpp" afterPath="$PROJECT_DIR$/Classes/ALImageView.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALImageView.h" afterPath="$PROJECT_DIR$/Classes/ALImageView.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNetControl.cpp" afterPath="$PROJECT_DIR$/Classes/ALNetControl.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNetControl.h" afterPath="$PROJECT_DIR$/Classes/ALNetControl.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNetDefine.h" afterPath="$PROJECT_DIR$/Classes/ALNetDefine.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNetworkHelper.cpp" afterPath="$PROJECT_DIR$/Classes/ALNetworkHelper.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNiangCardInfoLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ALNiangCardInfoLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALNotificationNameDefine.h" afterPath="$PROJECT_DIR$/Classes/ALNotificationNameDefine.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALPlayerData.cpp" afterPath="$PROJECT_DIR$/Classes/ALPlayerData.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALPlayerData.h" afterPath="$PROJECT_DIR$/Classes/ALPlayerData.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALUserData.cpp" afterPath="$PROJECT_DIR$/Classes/ALUserData.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALUserData.h" afterPath="$PROJECT_DIR$/Classes/ALUserData.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALUserInfoModel.cpp" afterPath="$PROJECT_DIR$/Classes/ALUserInfoModel.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALUserInfoModel.h" afterPath="$PROJECT_DIR$/Classes/ALUserInfoModel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALWebImageUtil.cpp" afterPath="$PROJECT_DIR$/Classes/ALWebImageUtil.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ALWebImageUtil.h" afterPath="$PROJECT_DIR$/Classes/ALWebImageUtil.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/AppDelegate.cpp" afterPath="$PROJECT_DIR$/Classes/AppDelegate.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GameDelegate/ALGameAppDelegate.cpp" afterPath="$PROJECT_DIR$/Classes/GameDelegate/ALGameAppDelegate.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GameOverLayer.cpp" afterPath="$PROJECT_DIR$/Classes/GameOverLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GameOverLayer.h" afterPath="$PROJECT_DIR$/Classes/GameOverLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GamePKScene.cpp" afterPath="$PROJECT_DIR$/Classes/GamePKScene.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GamePKScene.h" afterPath="$PROJECT_DIR$/Classes/GamePKScene.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GameScene.cpp" afterPath="$PROJECT_DIR$/Classes/GameScene.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/GameScene.h" afterPath="$PROJECT_DIR$/Classes/GameScene.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/IconSprite.cpp" afterPath="$PROJECT_DIR$/Classes/IconSprite.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/IconSprite.h" afterPath="$PROJECT_DIR$/Classes/IconSprite.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/MatchSuccessLayer.cpp" afterPath="$PROJECT_DIR$/Classes/MatchSuccessLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ReadyGameLayer.cpp" afterPath="$PROJECT_DIR$/Classes/ReadyGameLayer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ReadyGameLayer.h" afterPath="$PROJECT_DIR$/Classes/ReadyGameLayer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/StartGameScene.cpp" afterPath="$PROJECT_DIR$/Classes/StartGameScene.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/StartGameScene.h" afterPath="$PROJECT_DIR$/Classes/StartGameScene.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/iosClasses/ALGameHelpSetupUtilForIos.mm" afterPath="$PROJECT_DIR$/Classes/iosClasses/ALGameHelpSetupUtilForIos.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/iosClasses/ALNetworkHelperForIos.h" afterPath="$PROJECT_DIR$/Classes/iosClasses/ALNetworkHelperForIos.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/iosClasses/ALNetworkHelperForIos.mm" afterPath="$PROJECT_DIR$/Classes/iosClasses/ALNetworkHelperForIos.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/cocos2d/cocos/platform/android/libcocos2dx/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/LLKGame.iml" afterPath="$PROJECT_DIR$/proj.android-studio/app/LLKGame.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALAlertUtil.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALAlertUtil.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALBNSocketUitl.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALBNSocketUitl.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALDrawNiangCardLayer.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALDrawNiangCardLayer.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALImageView.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALImageView.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoShowLayer.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoShowLayer.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardShowLayer.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardShowLayer.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALToastUtil.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALToastUtil.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/AppDelegate.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/AppDelegate.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/MatchSuccessLayer.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/MatchSuccessLayer.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o.d" afterPath="$PROJECT_DIR$/proj.android-studio/app/obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.android-studio/app/src/org/cocos2dx/cpp/AppActivity.java" afterPath="$PROJECT_DIR$/proj.android-studio/app/src/org/cocos2dx/cpp/AppActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/xcuserdata/allen.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/proj.ios_mac/LLKGame.xcodeproj/xcuserdata/allen.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proj.ios_mac/ios/AppController.mm" afterPath="$PROJECT_DIR$/proj.ios_mac/ios/AppController.mm" />
+    </list>
     <ignored path="LLKGame.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,14 +149,17 @@
   <component name="FavoritesManager">
     <favorites_list name="LLKGame" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="196" />
-    <option name="y" value="23" />
+    <option name="x" value="149" />
+    <option name="y" value="28" />
     <option name="width" value="1675" />
     <option name="height" value="963" />
   </component>
@@ -54,7 +188,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -79,7 +213,7 @@
       <pane id="AndroidView">
         <subPane />
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,22 +307,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="196" y="23" width="1675" height="963" extended-state="0" />
+    <frame x="149" y="28" width="1675" height="963" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />

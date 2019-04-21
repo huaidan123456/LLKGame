@@ -382,7 +382,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
- jni/../../../Classes/IconSprite.h jni/../../../Classes/GameConfig.h \
+ jni/../../../Classes/IconSprite.h jni/../../../Classes/ALGameConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocosStudioExport.h \
@@ -475,7 +475,10 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GameScene.o: \
  jni/../../../Classes/ALDrawCardResultInfoModel.h \
  jni/../../../Classes/ALAlertUtil.h jni/../../../Classes/ALMusicUtil.h \
  jni/../../../Classes/ALUserInfoModel.h \
- jni/../../../Classes/ALToastUtil.h
+ jni/../../../Classes/ALToastUtil.h jni/../../../Classes/ALHelpTools.h \
+ jni/../../../Classes/ALNetworkHelper.h \
+ jni/../../../Classes/ALMD5Encode.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/timeb.h
 
 jni/../../../Classes/GameScene.h:
 
@@ -1245,7 +1248,7 @@ jni/../../../Classes/GameScene.h:
 
 jni/../../../Classes/IconSprite.h:
 
-jni/../../../Classes/GameConfig.h:
+jni/../../../Classes/ALGameConfig.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
 
@@ -1440,3 +1443,11 @@ jni/../../../Classes/ALMusicUtil.h:
 jni/../../../Classes/ALUserInfoModel.h:
 
 jni/../../../Classes/ALToastUtil.h:
+
+jni/../../../Classes/ALHelpTools.h:
+
+jni/../../../Classes/ALNetworkHelper.h:
+
+jni/../../../Classes/ALMD5Encode.h:
+
+/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/timeb.h:

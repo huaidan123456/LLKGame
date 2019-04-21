@@ -8,17 +8,21 @@
 #include "ALGameInviterAlertLayer.h"
 #include "ALImageView.h"
 #include "ALUserInfoModel.h"
+#include "ALHelpTools.h"
+#include "ALNotificationNameDefine.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
 
 #define DF_AGAL_SCHEDULE_CountDownTime  "DF_AGAL_SCHEDULE_CountDownTime"
 
+#define DF_AGAL_SCHEDULE_RefuseToHide  "DF_AGAL_SCHEDULE_RefuseToHide"
+
 ALGameInviterAlertLayer* ALGameInviterAlertLayer::create()
 {
     ALGameInviterAlertLayer* layer = new (std::nothrow)ALGameInviterAlertLayer();
     if (layer && layer->init()) {
-        layer->initUI();
+        layer->baseInit();
         layer->autorelease();
         return layer;
     }else{
@@ -29,14 +33,37 @@ ALGameInviterAlertLayer* ALGameInviterAlertLayer::create()
 
 ALGameInviterAlertLayer::ALGameInviterAlertLayer()
 {
-    
     _remainingTime = 10;
+    _appBackgroundTime = 0;
+    _appEnterBackgroundTime = 0;
 }
 
 ALGameInviterAlertLayer::~ALGameInviterAlertLayer()
 {
+    unscheduleAllCallbacks();
+    NotificationCenter::getInstance()->removeAllObservers(this);
+}
+
+void ALGameInviterAlertLayer::baseInit()
+{
+    initUI();
+    registerNotification();
     
 }
+
+
+void ALGameInviterAlertLayer::registerNotification()
+{
+    NotificationCenter::getInstance()->removeAllObservers(this);
+    
+    //监听恢复到前台的操作
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameInviterAlertLayer::appDidEnterBackgroundObserverFunc), NND_AppDidEnterBackground, NULL);
+    
+    //监听恢复到前台的操作
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameInviterAlertLayer::appWillEnterForegroundObserverFunc), NND_AppWillEnterForeground, NULL);
+}
+
+
 
 void ALGameInviterAlertLayer::initUI()
 {
@@ -120,16 +147,24 @@ void ALGameInviterAlertLayer::layerDidAppear()
 
 void ALGameInviterAlertLayer::layerDidDisappear()
 {
+    this->unschedule(DF_AGAL_SCHEDULE_RefuseToHide);
     this->unschedule(DF_AGAL_SCHEDULE_CountDownTime);
     setupSignState(INVITE_STATE::WAIT_SIGN);
+    progress->stopAllActions();
     progress->setPercentage(100);
     _remainingTime = 10;
     remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
+    
+    if (_disappearCallback) {
+        _disappearCallback();
+    }
     
 }
 
 void ALGameInviterAlertLayer::showAlertWithUserInfo(ALUserInfoModel *model)
 {
+    _friendUId = model->getUid();
+    
     headView->loadWebImageTexture(model->getHeadUrl(),"images/alertL_headImage.png");
     nameText->setString(model->getName());
     levelText->setString(StringUtils::format("Lv.%d",model->getLevel()));
@@ -137,6 +172,38 @@ void ALGameInviterAlertLayer::showAlertWithUserInfo(ALUserInfoModel *model)
     this->setVisible(true);
 }
 
+void ALGameInviterAlertLayer::hideAlert()
+{
+    if (this->isVisible()) {
+        hideAnimation->play("hideAnimation", false);
+    }else{
+        this->setVisible(false);
+    }
+}
+
+void ALGameInviterAlertLayer::hideAlertWithDelay(float delay)
+{
+    unschedule(DF_AGAL_SCHEDULE_RefuseToHide);
+    scheduleOnce([=](float ft){
+        this->hideAlert();
+    }, delay, DF_AGAL_SCHEDULE_RefuseToHide);
+}
+
+
+
+void ALGameInviterAlertLayer::setupDisappearCallback(const alAlertDisappearCallback& callback)
+{
+    _disappearCallback = callback;
+}
+
+
+/**
+ *  获取被邀请好友的的uid
+ */
+int ALGameInviterAlertLayer::getFriendUid()
+{
+    return _friendUId;
+}
 
 
 
@@ -146,20 +213,24 @@ void ALGameInviterAlertLayer::setupSignState(int state)
 {
     if (_signState != state) {
         _signState = state;
+        hintSprite->setVisible(true);
         switch (_signState) {
             case INVITE_STATE::REFUSE_SIGN:
             {
                 signSprite->setTexture("images/alertL_sign_refuse.png");
+                hintSprite->setTexture("images/alertL_txt_refuse.png");
                 break;
             }
             case INVITE_STATE::WAIT_SIGN:
             {
                 signSprite->setTexture("images/alertL_sign_wait.png");
+                hintSprite->setTexture("images/alertL_txt_wait.png");
                 break;
             }
             case INVITE_STATE::AGREE_SIGN:
             {
                 signSprite->setTexture("images/alertL_sign_agree.png");
+                hintSprite->setVisible(false);
                 break;
             }
         }
@@ -177,8 +248,92 @@ void ALGameInviterAlertLayer::updateRemainingTime()
         _remainingTime--;
         remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
     }else{
-        hideAnimation->play("hideAnimation", false);
+        hideAlert();
     }
+}
+
+
+/**
+ *  alert 重新设置剩余时间
+ */
+void ALGameInviterAlertLayer::resetRemainingTimeAction()
+{
+    if (this->isVisible()) {
+        this->unschedule(DF_AGAL_SCHEDULE_RefuseToHide);
+        this->unschedule(DF_AGAL_SCHEDULE_CountDownTime);
+        progress->stopAllActions();
+        // 先判断当前的状态 （如果是等待状态，则判断等待时间，如果是拒绝状态或者同意，则立即消失）
+        if (_signState == WAIT_SIGN) {
+            _remainingTime = _remainingTime - _appBackgroundTime;
+            if (_remainingTime > 0) {
+                // 执行进入条逐渐减少的动画
+                progress->setPercentage(_remainingTime*10);
+                remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
+                progress->runAction(ProgressTo::create(_remainingTime, 0));
+                this->schedule([=](float ft){
+                    this->updateRemainingTime();
+                }, 1, _remainingTime, 0, DF_AGAL_SCHEDULE_CountDownTime);
+            }else{
+                hideAlert();
+            }
+        }else{
+            hideAlert();
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+/**
+ *  游戏进入后台
+ */
+void ALGameInviterAlertLayer::appDidEnterBackgroundObserverFunc(Ref* ref)
+{
+    if (!(this->isVisible())) {
+        return;
+    }
+    
+    
+    if(_appEnterBackgroundTime == 0)
+    {
+        _appEnterBackgroundTime = ALHelpTools::getCurrentTime();
+    }
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+        if (showAnimation->isPlaying()) {
+        }
+        
+        if (hideAnimation->isPlaying())
+        {
+            hideAnimation->pause();
+            this->setVisible(false);
+        }
+    });
+}
+
+/**
+ *  游戏恢复前台
+ */
+void ALGameInviterAlertLayer::appWillEnterForegroundObserverFunc(Ref* ref)
+{
+    if (!(this->isVisible())) {
+        return;
+    }
+    
+    if (_appEnterBackgroundTime == 0) {
+        return;
+    }
+    _appBackgroundTime = (int)(ALHelpTools::getCurrentTime() - _appEnterBackgroundTime);
+    _appEnterBackgroundTime = 0;
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+        this->resetRemainingTimeAction();
+        _appBackgroundTime = 0;
+    });
 }
 
 

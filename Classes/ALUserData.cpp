@@ -20,6 +20,31 @@ int ALUserData::qingDouCount = 0;
 bool ALUserData::niangCard[10] = {false,false,false,false,false,false,false,false,false,false};
 
 cocos2d::Map<int,ALGameFriendInfoModel*> ALUserData::gameFriends; // 好友列表
+//** 是否刷新好友列表 *//
+bool ALUserData::isRefreshFriendList = false;
+
+
+
+
+
+
+
+/**
+ *  重置数据
+ */
+void ALUserData::resetUserData()
+{
+    ALUserData::loginUid = 1;
+    ALUserData::qingDouCount = 0;
+    // 娘卡
+    for (int i = 0; i < 10 ; ++i) {
+        ALUserData::niangCard[i] = false;
+    }
+    // 好友列表
+    ALUserData::gameFriends.clear();
+    ALUserData::isRefreshFriendList = false;
+
+}
 
 
 

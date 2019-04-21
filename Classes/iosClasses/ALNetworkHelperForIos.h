@@ -8,6 +8,7 @@
 #ifndef ALNetworkHelperForIos_h
 #define ALNetworkHelperForIos_h
 
+
 class ALNetworkHelperForIos
 {
 public:
@@ -15,6 +16,9 @@ public:
      *  检查当前的网络是否可用
      */
     static bool checkCurrentNetworkState();
+    
+    
+
     
 };
 

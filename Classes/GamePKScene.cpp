@@ -22,9 +22,11 @@
 #include "ALAlertUtil.h"
 #include "ALMusicUtil.h"
 #include "ALUserInfoModel.h"
+#include "ALGameFriendInfoModel.h"
 #include "ALToastUtil.h"
 #include "ALHelpTools.h"
 #include "ALNetworkHelper.h"
+#include <sys/timeb.h>
 
 
 
@@ -40,6 +42,10 @@ using namespace cocos2d::ui;
 
 #define DF_SCHEDULE_PK_reconnect "DF_SCHEDULE_PK_reconnect"   //  重连操作
 #define DF_SCHEDULE_PK_game "DF_SCHEDULE_PK_game"  // 游戏
+#define DF_SCHEDULE_PK_checkFriendOnLine "DF_SCHEDULE_PK_checkFriendOnLine"  // 检查好友的在线情况
+
+#define DF_SCHEDULE_PK_backGame "DF_SCHEDULE_PK_backGame"
+#define DF_SCHEDULT_PK_Friend_Leaved_Delay "DF_SCHEDULT_PK_Friend_Leaved_Delay"
 
 
 
@@ -68,7 +74,8 @@ GamePKScene::GamePKScene(int iconCount):_iconCount(iconCount)
     CCLOG("GamePKScene 的构造");
     df_startPointX = 75;
     df_startPointY = ALGameConfig::designType == DF_DESIGN_TYPE_h1280 ? 970 : 1100;
-    _closeDisconnectNotfication = false;
+    _closeDisconnectNotfication = true;
+    _isShowAlertOfLeaveInTheGame = false;
     _appEnterBackgroundTime = 0;
     _leftClearIconCount = 0;
     _rightClearIconCount = 0;
@@ -76,6 +83,11 @@ GamePKScene::GamePKScene(int iconCount):_iconCount(iconCount)
     _isStartGame = false;
     _isPause = false;
     _gameResultInfo = new ALGameResultInfoModel();
+    
+    
+    ALPlayerData::isReadyOfFriendFightGame = false;
+    ALPlayerData::leftCleanCountOfPKGame = 0;
+    ALPlayerData::rightCleanCountOfPKGame = 0;
 }
 
 
@@ -85,6 +97,7 @@ GamePKScene::~GamePKScene()
     _gameResultInfo = NULL;
     unscheduleAllCallbacks();
     NotificationCenter::getInstance()->removeAllObservers(this);
+    ALPlayerData::resetPlayerData();
     log("GamePKScene 析构");
 }
 
@@ -104,25 +117,63 @@ void GamePKScene::baseInit()
     
     
     readyLayer->setVisible(true);
-    readyLayer->startAniamtion(NULL, [&,this]{
+    readyLayer->startAniamtion([=]{
+        ALNetControl::readyOfFriendFightGame();
+    },[=]()->bool{
+        return ALPlayerData::isReadyOfFriendFightGame;
+    }, [=]{
         this->startGame();
+        ALPlayerData::isReadyOfFriendFightGame = false;
     });
 }
 
 
 void GamePKScene::registerNotification()
 {
-    // 断开连接
-    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::disConnectObserverFunc), NND_Disconnect, NULL);
+    NotificationCenter::getInstance()->removeAllObservers(this);
     
     //监听游戏结果
-    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::getGameResultObserverFunc), NND_GetStandAloneGameResult, NULL);
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::getGameResultObserverFunc), NND_GetFriendFightGameResult, NULL);
     
     //监听抽奖结果
     NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::getDrawNiangCardResultObserverFunc), NND_GetDrawNiangCardResult, NULL);
     
     // 刷新轻豆
     NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::refreshUserQingDouCountObserverFunc), NND_RefreshUserQingDouCount, NULL);
+    
+    /**
+     *  接收到对方再来一局的邀请
+     */
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveFriendInvitationOfGameAgainObserverFunc), NND_ReceiveFriendFightGameAgainInvitation, NULL);
+    
+    /**
+     *  接收到对方在游戏结束后 离开
+     */
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveFriendLeaveAfterGameOverObserverFunc), NND_ReceiveFriendFightOppositeLeave, NULL);
+    
+    /**
+     *  再来一局游戏 开始
+     */
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveGameAgainReadyStartOverObserverFunc), NND_ReceiveFriendFightGameAgainReadyStart, NULL);
+    
+    
+    /**
+     *  对方中途退出游戏
+     */
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveFriendLeaveInTheGameObserverFunc), NND_ReceiveFriendLeaveInTheGame, NULL);
+    
+    /**
+     *  重连到房间的数据（是否重连成功）
+     */
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveFriendFightGameReconnectResultObserverFunc), NND_ReceiveFriendFightReconnectResult, NULL);
+    
+    
+    // 注册游戏超时
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::receiveFightRoomTimeOutObserverFunc), NND_ReceiveFriendFightRoomTimeOut, NULL);
+    
+    // 断开连接
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GamePKScene::disConnectObserverFunc), NND_Disconnect, NULL);
+    
     
     
     //监听进入到后台的操作
@@ -135,6 +186,7 @@ void GamePKScene::registerNotification()
 
 void GamePKScene::initScheduler()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     unschedule(DF_ALNetworkHelper_SCHEDULE_Check_network);
     /**
      *  实时监测网路状况
@@ -146,7 +198,8 @@ void GamePKScene::initScheduler()
             }
         }
     }, 1, DF_ALNetworkHelper_SCHEDULE_Check_network);
-
+#endif
+    
 }
 
 
@@ -168,15 +221,24 @@ void GamePKScene::startGame()
          */
         schedule([=](float ft){
             bool isUpate = false;
-            if (ALPlayerData::leftCleanCountOfPKGame > _leftClearIconCount) {
+            if (ALPlayerData::leftCleanCountOfPKGame > _leftClearIconCount
+                && ALPlayerData::leftCleanCountOfPKGame <= (_xCount * _yCount *0.5))
+            {
                 _leftClearIconCount = ALPlayerData::leftCleanCountOfPKGame;
                 isUpate = true;
             }
-            if (ALPlayerData::rightCleanCountOfPKGame > _rightClearIconCount){
+            
+            if (ALPlayerData::rightCleanCountOfPKGame > _rightClearIconCount
+                && ALPlayerData::rightCleanCountOfPKGame <= (_xCount * _yCount *0.5))
+            {
                 _rightClearIconCount = ALPlayerData::rightCleanCountOfPKGame;
                 isUpate = true;
             }
-            updateProgress();
+            
+            if (isUpate)
+            {
+                updateProgress();
+            }
             
         }, 0.2, DF_SCHEDULE_PK_game);
     }
@@ -229,26 +291,45 @@ void GamePKScene::initUI()
     //    });
     //    this->addChild(restartBtn,999);
     //
-    //     //自动消除
-        auto autoBtn = Button::create("images/icon_normal_1.png");
-        autoBtn->setPosition(Vec2(400, 1230));
-        autoBtn->setTitleText("自动");
-        autoBtn->setTitleColor(Color3B::RED);
-        autoBtn->setTitleFontSize(32);
-        autoBtn->addClickEventListener([&,this](Ref*btn){
-            this->autoClear();
-        });
-        this->addChild(autoBtn,999);
-
+             //自动消除
+//            auto autoBtn = Button::create("images/icon_normal_1.png");
+//            autoBtn->setPosition(Vec2(400, 1230));
+//            autoBtn->setTitleText("自动");
+//            autoBtn->setTitleColor(Color3B::RED);
+//            autoBtn->setTitleFontSize(32);
+//            autoBtn->addClickEventListener([&,this](Ref*btn){
+//                this->autoClear();
+//            });
+//            this->addChild(autoBtn,999);
+    
     // ---------------------------------------
-
+    
     gameLayer = CSLoader::createNode("csbFile/GameLayer.csb");
     backBtn = (Button*)gameLayer->getChildByName("btn_back");
     backBtn->addClickEventListener([&,this](Ref*btn){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         ALAlertUtil::makeAlertOfExitGame(this, [&,this]{
-            Director::getInstance()->replaceScene(StartGameScene::create());
+            if (!_isLeaveGame) {
+                ALNetControl::sendLeaveRoomOfFriendFight();
+                Director::getInstance()->replaceScene(StartGameScene::create());
+                _isLeaveGame = true;
+                this->unschedule("schedule_leaveGame");
+                this->scheduleOnce([=](float ft){
+                    _isLeaveGame = false;
+                }, 1.f, "schedule_leaveGame");
+            }
+            
         });
+    });
+    
+    soundSwitchBtn = (Button*)gameLayer->getChildByName("btn_sound");
+    soundSwitchBtn->loadTextureNormal(ALMusicUtil::getInstrins()->getSoundSwitch() ? "images/mms_btn_music_on.png" : "images/mms_btn_music_off.png");
+    soundSwitchBtn->addClickEventListener([&,this](Ref* btn){
+        ALMusicUtil::getInstrins()->setSoundSwitch(!ALMusicUtil::getInstrins()->getSoundSwitch());
+        if (ALMusicUtil::getInstrins()->getSoundSwitch()) {
+            ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+        }
+        soundSwitchBtn->loadTextureNormal(ALMusicUtil::getInstrins()->getSoundSwitch() ? "images/mms_btn_music_on.png" : "images/mms_btn_music_off.png");
     });
     
     
@@ -355,14 +436,32 @@ void GamePKScene::initUI()
     
     // 游戏结束界面
     gameOverLayer = GameOverLayer::create();
+    gameOverLayer->setupConcernState(true);
     gameOverLayer->setVisible(false);
     gameOverLayer->setupGameAgainCallback([&,this]{
-        // TODO: todo:发送再来一局的邀请
-        this->restartGame();
+        // 再来一局
+        if (gameOverLayer->getGameAgainBtnState() == GameOverLayer::GameAgainState::againState) {
+            gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::waitState);
+            ALNetControl::sendGameAgainOfFriendFight(ALPlayerData::opponentInfo->getUid());
+        }
+        // 同意再来一局
+        else if (gameOverLayer->getGameAgainBtnState() == GameOverLayer::GameAgainState::invitedState){
+            ALNetControl::sendAgreeGameAgainOfFriendFight(ALPlayerData::opponentInfo->getUid());
+        }
+        
     });
     gameOverLayer->setupBackCallback([&,this]{
         // 返回的回调
-        Director::getInstance()->replaceScene(StartGameScene::create());
+        if (!_isLeaveGame) {
+            ALNetControl::sendLeaveFriendFightGameOfGameOver(ALPlayerData::opponentInfo->getUid());
+            Director::getInstance()->replaceScene(StartGameScene::create());
+            _isLeaveGame = true;
+            this->unschedule("schedule_leaveGame");
+            this->scheduleOnce([=](float ft){
+                _isLeaveGame = false;
+            }, 1.f, "schedule_leaveGame");
+        }
+        
     });
     gameOverLayer->setupDrawCardCallback([&,this]{
         // 抽卡回调
@@ -376,16 +475,43 @@ void GamePKScene::initUI()
     });
     // 游戏结束
     gameOverLayer->setupGameOverShowCompleteCallback([&,this]{
-        
+        this->unschedule(DF_SCHEDULE_PK_checkFriendOnLine);
+        this->schedule([=](float ft){
+            // 查看好友的状态
+            if (gameOverLayer->isVisible() && gameOverLayer->getGameAgainBtnState() != GameOverLayer::GameAgainState::levelState)
+            {
+                // 判断好友是否在线来判断好友是否离开
+                if (ALUserData::gameFriends.find(ALPlayerData::opponentInfo->getUid()) != ALUserData::gameFriends.end())
+                {
+                    ALGameFriendInfoModel* model = ALUserData::gameFriends.at(ALPlayerData::opponentInfo->getUid());
+                    if (model->getOnlineState() == ALGameFriendInfoModel::ONLINE_STATE::OFFLINE)
+                    {
+                        gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::levelState);
+                    }
+                }else{
+                    gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::levelState);
+                }
+            }
+        }, 1.f,DF_SCHEDULE_PK_checkFriendOnLine);
     });
     
     this->addChild(gameOverLayer,20);
     
     //抽卡展示页面
     drawCardLayer = ALDrawNiangCardLayer::create();
+    drawCardLayer->setupLookCardInfoCallbakc([=](int cardIndex){
+        if (!_isLeaveGame) {
+            ALNetControl::sendLeaveFriendFightGameOfGameOver(ALPlayerData::opponentInfo->getUid());
+            Director::getInstance()->replaceScene(StartGameScene::createWithShowCardInfo(cardIndex-1));
+            _isLeaveGame = true;
+            this->unschedule("schedule_leaveGame");
+            this->scheduleOnce([=](float ft){
+                _isLeaveGame = false;
+            }, 1.f, "schedule_leaveGame");
+        }
+    });
     drawCardLayer->setVisible(false);
     this->addChild(drawCardLayer,22);
-    
     
 }
 
@@ -396,7 +522,10 @@ void GamePKScene::initDataMap()
     for (int i = 0; i < DF_ICON_COUNT; ++i) {
         typeArray[i] = i+1;
     }
-    srand((unsigned int)time(NULL));
+    struct timeb timeSeed;
+    ftime(&timeSeed);
+    srand(timeSeed.time * 1000 + timeSeed.millitm);
+    //    srand((unsigned int)time(NULL));
     int tempIndex;
     for (int i = 0; i < DF_ICON_COUNT; ++i) {
         tempIndex = (int)(CCRANDOM_0_1()*(DF_ICON_COUNT-1-i));
@@ -446,7 +575,10 @@ void GamePKScene::drawMap()
 
 void GamePKScene::changeDataMap()
 {
-    srand((unsigned int)time(NULL));
+    struct timeb timeSeed;
+    ftime(&timeSeed);
+    srand(timeSeed.time * 1000 + timeSeed.millitm);
+    //    srand((unsigned int)time(NULL));
     int tempX,tempY,tempM;
     
     // 遍历地图数组，随机换位置
@@ -454,9 +586,11 @@ void GamePKScene::changeDataMap()
         for (int y = 0; y < _yCount; ++y) {
             tempX = (int)(CCRANDOM_0_1() * _xCount);
             tempY = (int)(CCRANDOM_0_1() * _yCount);
-            tempM = _dataMap[x][y];
-            _dataMap[x][y] = _dataMap[tempX][tempY];
-            _dataMap[tempX][tempY] = tempM;
+            if (tempX >= 0 && tempX < _xCount && tempY >= 0 && tempY < _yCount) {
+                tempM = _dataMap[x][y];
+                _dataMap[x][y] = _dataMap[tempX][tempY];
+                _dataMap[tempX][tempY] = tempM;
+            }
         }
     }
     // 将选中的数组清空
@@ -810,10 +944,11 @@ void GamePKScene::drawLine()
 void GamePKScene::clearIcon(cocos2d::Vec2 v1, cocos2d::Vec2 v2, cocos2d::DrawNode* drawNode)
 {
     
-//    _leftClearIconCount++;
-//    updateProgress();
+    //    _leftClearIconCount++;
+    //    updateProgress();
+    //    ALPlayerData::leftCleanCountOfPKGame++;
     // TODO: todo:发送服务器
-    ALPlayerData::leftCleanCountOfPKGame++;
+    ALNetControl::sendCleanIconOfFriendFight();
     
     _dataMap[(int)v1.x][(int)v1.y] = 0;
     _dataMap[(int)v2.x][(int)v2.y] = 0;
@@ -892,6 +1027,7 @@ void GamePKScene::updateProgress()
 void GamePKScene::restartGame()
 {
     this->unschedule(DF_SCHEDULE_PK_game);
+    this->unschedule(DF_SCHEDULE_PK_checkFriendOnLine);
     _gameOver = false;
     _isStartGame = false;
     _isPause = false;
@@ -913,8 +1049,13 @@ void GamePKScene::restartGame()
     gameOverLayer->setVisible(false);
     
     readyLayer->setVisible(true);
-    readyLayer->startAniamtion(NULL, [&,this]{
+    readyLayer->startAniamtion([=]{
+        ALNetControl::readyOfFriendFightGame();
+    },[=]()->bool{
+        return ALPlayerData::isReadyOfFriendFightGame;
+    }, [=]{
         this->startGame();
+        ALPlayerData::isReadyOfFriendFightGame = false;
     });
     
 }
@@ -922,9 +1063,6 @@ void GamePKScene::restartGame()
 void GamePKScene::GameOver()
 {
     _gameOver = true;
-    
-    
-    ALNetControl::sendStandAloneGameResult(true);
 }
 
 void GamePKScene::showGameResult()
@@ -969,7 +1107,7 @@ void GamePKScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     float px = touch->getLocation().x;
     
     float py = touch->getLocation().y;
-//    log("点击屏幕坐标 (%f,%f)",px,py);
+    //    log("点击屏幕坐标 (%f,%f)",px,py);
     // 点击区域的限制
     if (py <= df_startPointY + 70) {
         // 获取_dataMap 坐标
@@ -1082,6 +1220,102 @@ void GamePKScene::refreshUserQingDouCountObserverFunc(Ref* ref)
 }
 
 /**
+ *  接收到对方再来一局的邀请
+ */
+void GamePKScene::receiveFriendInvitationOfGameAgainObserverFunc(Ref* ref)
+{
+    int uid = ((String*)ref)->intValue();
+    if (uid == ALPlayerData::opponentInfo->getUid()) {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            CCLOG("再来一局");
+            if (gameOverLayer->isVisible() && gameOverLayer->getGameAgainBtnState() != GameOverLayer::GameAgainState::levelState) {
+                // 设置再来一局
+                gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::invitedState);
+            }
+        });
+    }
+}
+
+/**
+ *  接收到对方在游戏结束后 离开
+ */
+void GamePKScene::receiveFriendLeaveAfterGameOverObserverFunc(Ref* ref)
+{
+    int uid = ((String*)ref)->intValue();
+    if (uid == ALPlayerData::opponentInfo->getUid()) {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            if (gameOverLayer->isVisible()) {
+                // 设置对方已经离开
+                gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::levelState);
+            }
+        });
+    }
+}
+
+/**
+ *  再来一局游戏 开始
+ */
+void GamePKScene::receiveGameAgainReadyStartOverObserverFunc(Ref* ref)
+{
+    int uid = ((String*)ref)->intValue();
+    if (uid == ALPlayerData::opponentInfo->getUid())
+    {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            this->restartGame();
+        });
+    }
+}
+
+/**
+ *  对方中途退出游戏
+ */
+void GamePKScene::receiveFriendLeaveInTheGameObserverFunc(Ref* ref)
+{
+    
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+        CCLOG("对方中途退出游戏");
+        if (!_isShowAlertOfLeaveInTheGame) {
+            _isShowAlertOfLeaveInTheGame = true;
+            ALAlertUtil::makeAlertOfGameInterruption(this, [=]{
+                this->unschedule(DF_SCHEDULT_PK_Friend_Leaved_Delay);
+                Director::getInstance()->replaceScene(StartGameScene::create());
+            });
+            // 3 秒退出游戏 返回大厅
+            this->unschedule(DF_SCHEDULT_PK_Friend_Leaved_Delay);
+            this->scheduleOnce([=](float ft){
+                Director::getInstance()->replaceScene(StartGameScene::create());
+            }, 3.5f, DF_SCHEDULT_PK_Friend_Leaved_Delay);
+        }
+        
+    });
+}
+
+/**
+ *  接收到游戏超时消息
+ */
+void GamePKScene::receiveFightRoomTimeOutObserverFunc(Ref* ref)
+{
+    CCLOG("接收到游戏超时消息");
+    int roomId = ((String*)ref)->intValue();
+    if (roomId == ALPlayerData::roomIdOfPK) {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            ALAlertUtil::makeAlertOfFriendFightRoomTimeOut(this, [=]{
+                Director::getInstance()->replaceScene(StartGameScene::create());
+            });
+            // 3 秒退出游戏 返回大厅
+            this->unschedule(DF_SCHEDULT_PK_Friend_Leaved_Delay);
+            this->scheduleOnce([=](float ft){
+                Director::getInstance()->replaceScene(StartGameScene::create());
+            }, 3.5f, DF_SCHEDULT_PK_Friend_Leaved_Delay);
+        });
+    }
+}
+
+
+
+
+
+/**
  *  断开连接的操作
  */
 void GamePKScene::disConnectObserverFunc(Ref* ref)
@@ -1089,12 +1323,23 @@ void GamePKScene::disConnectObserverFunc(Ref* ref)
     Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
         if (!_closeDisconnectNotfication) {
             this->pauseGame();
-            ALAlertUtil::makeAlertOfConnectTimeOut(this, [&,this]{
+            ALAlertUtil::makeAlertOfDisconnect(this, [&,this]{
                 Director::getInstance()->replaceScene(StartGameScene::create());
             });
+            // 3 秒退出游戏 返回大厅
+            this->unschedule(DF_SCHEDULT_PK_Friend_Leaved_Delay);
+            this->scheduleOnce([=](float ft){
+                Director::getInstance()->replaceScene(StartGameScene::create());
+            }, 3.5f, DF_SCHEDULT_PK_Friend_Leaved_Delay);
             
         }else{
             _closeDisconnectNotfication = false;
+            bool isConnect = ALNetControl::connectServerWithIp(ALND_NF_IP, ALND_NF_PORT, ALUserData::loginUid);
+            if (isConnect) {
+                _closeDisconnectNotfication = true;
+                // 重新连接回游戏
+                ALNetControl::reconnectOfFriendFight(ALUserData::loginUid, ALPlayerData::roomIdOfPK);
+            }
         }
     });
 }
@@ -1108,7 +1353,7 @@ void GamePKScene::appDidEnterBackgroundObserverFunc(Ref* ref)
     _appEnterBackgroundTime = ALHelpTools::getCurrentTime();
     CCLOG("GamePKScene  游戏进入后台  时间戳  = %ld",_appEnterBackgroundTime);
     this->pauseGame();
-    _closeDisconnectNotfication = true;
+    //    _closeDisconnectNotfication = true;
 }
 
 /**
@@ -1118,9 +1363,50 @@ void GamePKScene::appWillEnterForegroundObserverFunc(Ref* ref)
 {
     CCLOG("GamePKScene  游戏恢复前台 ");
     Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
-        CCLOG("是否连接   = %d",ALNetControl::isConnect());
-
+        
+        this->scheduleOnce([=](float ft){
+            CCLOG("是否连接   = %d",ALNetControl::isConnect());
+            if (ALNetControl::isConnect()) {
+                if (!gameOverLayer->isVisible()) {
+                    ALNetControl::backGameAfterEnterforeground(ALPlayerData::roomIdOfPK);
+                }
+            }
+        }, 0.1, DF_SCHEDULE_PK_backGame);
+        
     });
+}
+
+/**
+ *  重连到房间的数据（是否重连成功）
+ */
+void GamePKScene::receiveFriendFightGameReconnectResultObserverFunc(Ref* ref)
+{
+    int code = ((String*)ref)->intValue();
+    CCLOG("GamePKScene  重连到房间的数据 code = %d ",code);
+    // 失败
+    if (code == 0) {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            if (!gameOverLayer->isVisible()) {
+                ALAlertUtil::makeAlertOfFriendFightGameOver(this, [=]{
+                    Director::getInstance()->replaceScene(StartGameScene::create());
+                });
+                // 3 秒退出游戏 返回大厅
+                this->unschedule(DF_SCHEDULT_PK_Friend_Leaved_Delay);
+                this->scheduleOnce([=](float ft){
+                    Director::getInstance()->replaceScene(StartGameScene::create());
+                }, 3.5f, DF_SCHEDULT_PK_Friend_Leaved_Delay);
+            }
+        });
+    }
+    // 成功
+    else if (code == 1){
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+            if (gameOverLayer->isVisible()) {
+                gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::levelState);
+            }
+            
+        });
+    }
 }
 
 

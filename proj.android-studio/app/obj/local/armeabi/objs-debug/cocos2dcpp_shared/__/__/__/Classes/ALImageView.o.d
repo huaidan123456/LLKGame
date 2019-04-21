@@ -17,6 +17,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALImageView.o: \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/types.h \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
@@ -439,6 +440,8 @@ jni/../../../Classes/ALImageView.h:
 /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h:
 
 /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h:
+
+/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h:
 

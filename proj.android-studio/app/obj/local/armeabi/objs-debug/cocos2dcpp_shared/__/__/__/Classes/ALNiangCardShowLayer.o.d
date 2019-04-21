@@ -400,7 +400,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardShowL
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
- jni/../../../Classes/GameConfig.h
+ jni/../../../Classes/ALGameConfig.h jni/../../../Classes/ALMusicUtil.h
 
 jni/../../../Classes/ALNiangCardShowLayer.h:
 
@@ -1202,4 +1202,6 @@ jni/../../../Classes/ALNiangCardShowLayer.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h:
 
-jni/../../../Classes/GameConfig.h:
+jni/../../../Classes/ALGameConfig.h:
+
+jni/../../../Classes/ALMusicUtil.h:

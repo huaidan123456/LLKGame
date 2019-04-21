@@ -364,6 +364,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALAlertUtil.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../../Classes/ALGameConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWidget.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCProtectedNode.h \
@@ -1130,6 +1131,8 @@ jni/../../../Classes/ALAlertUtil.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
+
+jni/../../../Classes/ALGameConfig.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h:
 

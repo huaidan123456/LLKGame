@@ -48,7 +48,12 @@ void IconSprite::changeIconTypeWithAnimation(int type)
     CallFunc* scaleCompleteCallback = CallFunc::create([&,type,this]{
         this->setupIconType(type);
     });
-    
+    _boomSprite->stopAllActions();
+    if (_destroyFinishCallback) {
+        setupIconType(IconType_0);
+        _destroyFinishCallback();
+        _destroyFinishCallback = nullptr;
+    }
     _normalSprite->stopAllActions();
     _normalSprite->runAction(Sequence::create(ScaleTo::create(0.2,0.1),Hide::create(),scaleCompleteCallback,Show::create(),ScaleTo::create(0.2,1), NULL));
 }
@@ -88,24 +93,20 @@ bool IconSprite::getSelectionState()
 void IconSprite::destroyIcon(const IconDestroyFinishCallback& callback)
 {
 
+    _destroyFinishCallback = callback;
     float mDelay = 0.4;
     _normalSprite->setVisible(false);
     _selectedSprite->setVisible(false);
     _selectedKuang->setVisible(false);
     _destroySprite->setVisible(true);
     _boomSprite->setVisible(true);
-    _boomSprite->runAction(Sequence::create(ScaleTo::create(0.1, 1.2),ScaleTo::create(0.1, 0.8),ScaleTo::create(0.1, 1.2),ScaleTo::create(0.1, 1),CallFunc::create([&,callback,this]{
+    _boomSprite->runAction(Sequence::create(ScaleTo::create(0.1, 1.2),ScaleTo::create(0.1, 0.8),ScaleTo::create(0.1, 1.2),ScaleTo::create(0.1, 1),CallFunc::create([&,this]{
         setupIconType(IconType_0);
-    }) ,NULL));
-//    _destroySprite->runAction(Sequence::create(DelayTime::create(mDelay),CallFunc::create([&,callback,this]{
-//        setupIconType(IconType_0);
-//    }), NULL));
-    
-    scheduleOnce([&,callback,this](float ft){
-        if (callback) {
-            callback();
+        if (_destroyFinishCallback) {
+            _destroyFinishCallback();
+            _destroyFinishCallback = nullptr;
         }
-    }, mDelay, "schedule_clearIcon");
+    }) ,NULL));
 }
 
 
@@ -202,26 +203,20 @@ void IconSprite::retsetIcon()
     _boomSprite->setVisible(false);
     
     setupSelected(false);
-
-    
 }
 
 
 void IconSprite::runIconSelectionAnimation()
 {
-    // TODO: todo:需要修改
-//    _normalSprite->stopAllActions();
     if (_isSelected) {
         log("执行被选中动画");
         _normalSprite->setVisible(false);
         _selectedSprite->setVisible(true);
         _selectedKuang->setVisible(true);
-//        _normalSprite->runAction(ScaleTo::create(0.2, 1.2));
     }else{
         log("执行取消选中的动画");
         _normalSprite->setVisible(true);
         _selectedSprite->setVisible(false);
         _selectedKuang->setVisible(false);
-//        _normalSprite->runAction(ScaleTo::create(0.2, 1));
     }
 }

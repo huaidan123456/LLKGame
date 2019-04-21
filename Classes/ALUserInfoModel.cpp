@@ -30,11 +30,12 @@ ALUserInfoModel::ALUserInfoModel()
     _currentExp = 0;
     _sumExp = 0;
     _qingDouCount = 0;
+    _isConcern = false;
 }
 
 ALUserInfoModel::~ALUserInfoModel()
 {
-    
+    CCLOG("~ALUserInfoModel()");
 }
 
 
@@ -121,4 +122,30 @@ int ALUserInfoModel::getQingDouCount()
 void ALUserInfoModel::setQingDou(int count)
 {
     _qingDouCount = count;
+}
+
+
+bool ALUserInfoModel::isConcern()
+{
+    return _isConcern;
+}
+void ALUserInfoModel::setConcern(bool isConcern)
+{
+    _isConcern = isConcern;
+}
+
+
+/**
+ *  重置
+ */
+void ALUserInfoModel::resetModel()
+{
+    _uid = 0;
+    _uname = "";
+    _headUrl = "";
+    _level = 1;
+    _currentExp = 0;
+    _sumExp = 0;
+    _qingDouCount = 0;
+    _isConcern = false;
 }

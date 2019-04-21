@@ -81,7 +81,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         ALGameConfig::designType = DF_DESIGN_TYPE_h1560;
         
     }else{
-        glview->setDesignResolutionSize(720,1280, ResolutionPolicy::NO_BORDER);
+        glview->setDesignResolutionSize(720,1280, ResolutionPolicy::SHOW_ALL);
         ALGameConfig::designType = DF_DESIGN_TYPE_h1280;
     }
 #else
@@ -107,10 +107,10 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
     // 进入后台
     CCLOG("进入后台");
-//    ALMusicUtil::getInstrins()->stopAllMusicAndEffect();
     NotificationCenter::getInstance()->postNotification(NND_AppDidEnterBackground);
-    // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+
+    //暂停背景音乐
+    ALMusicUtil::getInstrins()->pauseSound();
 }
 
 // this function will be called when the app is active again
@@ -135,6 +135,8 @@ void AppDelegate::applicationWillEnterForeground() {
         ALPlayerData::isNotifyResetScene = false;
     }
 #endif
-    // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    
+    //恢复背景音乐
+    ALMusicUtil::getInstrins()->resumeSound(false);
+    
 }

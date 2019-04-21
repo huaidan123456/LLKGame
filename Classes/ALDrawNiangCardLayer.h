@@ -17,6 +17,10 @@ class ALDrawCardResultInfoModel;
 class ALDrawNiangCardLayer:public ALBaseLayer
 {
 public:
+    //** 查看详情的回调 *//
+    typedef std::function<void (int cardIndex)> alDrawCardResultLookCardInfoCallback;
+    
+    
     static ALDrawNiangCardLayer* create();
     ALDrawNiangCardLayer();
     ~ALDrawNiangCardLayer();
@@ -33,6 +37,11 @@ public:
      *  展示是否中奖
      */
     void showWithInfo(ALDrawCardResultInfoModel* model);
+    
+    /**
+     *  设置查看卡片详情的回调
+     */
+    void setupLookCardInfoCallbakc(const alDrawCardResultLookCardInfoCallback& callback);
     
     
 private:
@@ -72,6 +81,8 @@ private:
     
     //** 获取到的卡片  0表示没有获取*//
     int _cardIndex;
+    //** 查看卡片详情的回调 *//
+    alDrawCardResultLookCardInfoCallback _lookCardInfoCallback;
     
     
 };

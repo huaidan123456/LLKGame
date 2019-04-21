@@ -22,6 +22,7 @@ class GameOverLayer:public ALBaseLayer
 public:
     typedef std::function<void ()> alGameOverBtnClickCallback;
     typedef std::function<void ()> alGameOverShowCompleteCallback;
+    typedef std::function<void (int opponentUid)> alGameOverConcernCallback;
     
     enum GameAgainState
     {
@@ -69,6 +70,11 @@ public:
      */
     void setupQingDouCount(int count);
     
+    /**
+     *  设置关注状态
+     */
+    void setupConcernState(bool isConcerState);
+    
     
     /**
      *  设置按钮的回调
@@ -76,6 +82,7 @@ public:
     void setupDrawCardCallback(const alGameOverBtnClickCallback& callback);
     void setupBackCallback(const alGameOverBtnClickCallback& callback);
     void setupGameAgainCallback(const alGameOverBtnClickCallback& callback);
+    void setupConcernCallback(const alGameOverConcernCallback& callback);
     
     /**
      *  设置游戏结束的显示回调
@@ -137,6 +144,8 @@ private:
     int _gameAgainState = 0;
     
     
+    //** 关注按钮的回调 *//
+    alGameOverConcernCallback _concernCallback;
     //** 抽奖的回调 *//
     alGameOverBtnClickCallback _drawCardCallback;
     //** 返回回调 *//

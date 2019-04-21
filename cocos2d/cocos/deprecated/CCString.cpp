@@ -53,7 +53,7 @@ __String::__String(const __String& str)
 
 __String::~__String()
 {
-    CCLOGINFO("deallocing __String: %p", this);
+    CCLOG("deallocing __String: %p", this);
 
     _string.clear();
 }

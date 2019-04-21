@@ -18,6 +18,11 @@ public:
     typedef std::function<void (bool isSuccess)> ALCallBack;
     
     static void loadWebImageTexture(const char* url ,const ALCallBack& callback, const char* defultImage = "images/definedHead.png");
+    
+    /**
+     *  下载webimage 并且加载到缓存中
+     */
+    static void addWebImageToCache(const char* url);
 };
 
 #endif /* ALWebImageUtil_h */

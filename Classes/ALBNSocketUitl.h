@@ -55,6 +55,9 @@ public:
     //** 是否连接服务器的标志 *//
     static bool _connectFlag;
     
+    //** 心跳线程是否开启 *//
+    static bool _isOpenHeadThread;
+    
     
     /**
      *  通知的开关
@@ -77,6 +80,11 @@ public:
      *  接收消息
      */
     static void* threadReceiveTask();
+    
+    /**
+     *  心跳包的发送
+     */
+    static void* threadSendHeartbeat();
     
     /**
      *   关闭连接

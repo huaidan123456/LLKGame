@@ -41,6 +41,8 @@ private:
     
     cocos2d::ui::Button* backBtn;
     
+    cocos2d::ui::Button* soundSwitchBtn;
+    
     cocos2d::Sprite* progressLeft;
     cocos2d::Sprite* progressRight;
     
@@ -62,6 +64,10 @@ private:
     GameOverLayer* gameOverLayer;
     //** 抽到卡片的界面 *//
     ALDrawNiangCardLayer* drawCardLayer;
+    
+    
+    //** 离开游戏的限制 (如果是false 可以点击，如果是true 则不可以点击)*//
+    bool _isLeaveGame = false;
     
     //** 第一个icon的 x坐标 *//
     float df_startPointX;
@@ -90,6 +96,11 @@ private:
     long _appEnterBackgroundTime;
     //** 是否关闭断网通知 *//
     bool _closeDisconnectNotfication;
+    
+    //** 是有已经弹出过对方中途退出 *//
+    bool _isShowAlertOfLeaveInTheGame;
+    
+    
     
     //** dataMap 主要是用于存储 iconType *//
     int _dataMap[DF_XCOUNT][DF_YCOUNT];
@@ -275,9 +286,39 @@ private:
     void refreshUserQingDouCountObserverFunc(Ref* ref);
     
     /**
+     *  接收到对方再来一局的邀请
+     */
+    void receiveFriendInvitationOfGameAgainObserverFunc(Ref* ref);
+    
+    /**
+     *  接收到对方在游戏结束后 离开
+     */
+    void receiveFriendLeaveAfterGameOverObserverFunc(Ref* ref);
+    
+    /**
+     *  再来一局游戏 开始
+     */
+    void receiveGameAgainReadyStartOverObserverFunc(Ref* ref);
+    
+    /**
+     *  对方中途退出游戏
+     */
+    void receiveFriendLeaveInTheGameObserverFunc(Ref* ref);
+    
+    /**
+     *  接收到游戏超时消息
+     */
+    void receiveFightRoomTimeOutObserverFunc(Ref* ref);
+    
+    /**
      *  断开连接的操作
      */
     void disConnectObserverFunc(Ref* ref);
+    
+    /**
+     *  重连到房间的数据（是否重连成功）
+     */
+    void receiveFriendFightGameReconnectResultObserverFunc(Ref* ref);
     
     /**
      *  游戏进入后台
@@ -288,6 +329,8 @@ private:
      *  游戏恢复到前台
      */
     void appWillEnterForegroundObserverFunc(Ref* ref);
+    
+    
 };
 
 #endif /* GamePKScene_h */

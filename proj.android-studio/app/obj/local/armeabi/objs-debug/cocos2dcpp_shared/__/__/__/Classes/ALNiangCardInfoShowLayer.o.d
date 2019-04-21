@@ -476,7 +476,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALNiangCardInfoS
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCSkeletonNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderer.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCBoneNode.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h \
+ jni/../../../Classes/ALGameConfig.h
 
 jni/../../../Classes/ALNiangCardInfoShowLayer.h:
 
@@ -1431,3 +1432,5 @@ jni/../../../Classes/ALBaseLayer.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCBoneNode.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h:
+
+jni/../../../Classes/ALGameConfig.h:

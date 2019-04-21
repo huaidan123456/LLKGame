@@ -381,7 +381,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALBNSocketUitl.o
  jni/../../../Classes/ALUserInfoModel.h \
  jni/../../../Classes/ALGameResultInfoModel.h \
  jni/../../../Classes/ALDrawCardResultInfoModel.h \
- jni/../../../Classes/ALNotificationNameDefine.h
+ jni/../../../Classes/ALNotificationNameDefine.h \
+ jni/../../../Classes/ALGameFriendInfoModel.h
 
 jni/../../../Classes/ALBNSocketUitl.h:
 
@@ -1148,3 +1149,5 @@ jni/../../../Classes/ALGameResultInfoModel.h:
 jni/../../../Classes/ALDrawCardResultInfoModel.h:
 
 jni/../../../Classes/ALNotificationNameDefine.h:
+
+jni/../../../Classes/ALGameFriendInfoModel.h:

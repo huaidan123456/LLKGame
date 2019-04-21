@@ -29,7 +29,7 @@ ALImageView* ALImageView::create(const std::string &imageFileName)
 
 ALImageView::ALImageView()
 {
-    
+    loadSprite = nullptr;
     _isaExist = true;
 }
 
@@ -49,13 +49,19 @@ void ALImageView::loadWebImageTextureWithLoad(const std::string url , const std:
         }
         return;
     }
+    _imageUrl = url;
     Texture2D* texture = Director::getInstance()->getTextureCache()->getTextureForKey(url);
     if (texture) {
-        CCLOG("texture2D 存在");
+//        CCLOG("texture2D 存在");
         SpriteFrame * frame = SpriteFrame::createWithTexture(texture,Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
         this->loadTexture(frame);
     }else{
-        
+        if (loadSprite) {
+            loadSprite->stopAllActions();
+            loadSprite->setVisible(false);
+            loadSprite = nullptr;
+        }
+
         loadSprite = Sprite::create(loadImgaPath);
         loadSprite->setVisible(true);
         loadSprite->setPosition(Vec2(this->getContentSize().width/2, this->getContentSize().height/2));
@@ -81,15 +87,13 @@ void ALImageView::loadWebImageTextureWithLoad(const std::string url , const std:
                     CCLOG("图片有数据");
                     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(image, response->getHttpRequest()->getUrl());
                     if (texture) {
-                        if (this->getReferenceCount() > 0) {
+                        if (this->getReferenceCount() > 0 && strcmp(response->getHttpRequest()->getUrl(), _imageUrl.c_str()) == 0) {
                             this->loadTexture(SpriteFrame::createWithTexture(texture,Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height)));
                         }
                     }
                 }else{
                     CCLOG("图片没数据");
-                    
                     this->loadTexture(defultImage);
-                    
                 }
                 image->release();
             }else{
@@ -125,10 +129,10 @@ void ALImageView::loadWebImageTexture(const std::string url , const std::string 
         }
         return;
     }
-    
+    _imageUrl = url;
     Texture2D* texture = Director::getInstance()->getTextureCache()->getTextureForKey(url);
     if (texture) {
-        CCLOG("texture2D 存在");
+//        CCLOG("texture2D 存在");
         SpriteFrame * frame = SpriteFrame::createWithTexture(texture,Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
         this->loadTexture(frame);
     }else{
@@ -149,7 +153,7 @@ void ALImageView::loadWebImageTexture(const std::string url , const std::string 
                     CCLOG("图片有数据");
                     Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(image, response->getHttpRequest()->getUrl());
                     if (texture) {
-                        if (this->getReferenceCount() > 0) {
+                        if (this->getReferenceCount() > 0 && strcmp(response->getHttpRequest()->getUrl(), _imageUrl.c_str()) == 0) {
                             this->loadTexture(SpriteFrame::createWithTexture(texture,Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height)));
                         }
                     }

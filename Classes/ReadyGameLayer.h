@@ -14,7 +14,7 @@
 class ReadyGameLayer:public ALBaseLayer
 {
 public:
-    
+    typedef std::function<bool ()> ALReadGameWaitCallback;
     typedef std::function<void ()> ALReadGameAnimationCallback;
     
     static ReadyGameLayer* create();
@@ -45,7 +45,12 @@ public:
     /**
      *  直接执行动作 (waitCallback 是在子线程中执行的)
      */
-    void startAniamtion(const ALReadGameAnimationCallback& waitCallback,const ALReadGameAnimationCallback& endCallback);
+    void startAniamtion(const ALReadGameWaitCallback& waitCallback,const ALReadGameAnimationCallback& endCallback);
+    
+    /**
+     *  直接执行动作 (waitCallback 是在子线程中执行的)
+     */
+    void startAniamtion(const ALReadGameAnimationCallback& readyCallback,const ALReadGameWaitCallback& waitCallback,const ALReadGameAnimationCallback& endCallback);
     
 
     
@@ -61,9 +66,12 @@ private:
     
     ALReadGameAnimationCallback _endCallback;
     
+    //** 等待线程是否可以运行 *//
+    bool _isWaitThreadRun = true;
     
     
-    void waitThread(const ALReadGameAnimationCallback& waitCallback);
+    
+    void waitThread(const ALReadGameWaitCallback& waitCallback);
     
     
 };

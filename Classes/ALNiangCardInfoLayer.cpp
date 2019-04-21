@@ -59,6 +59,8 @@ ALNiangCardInfoLayer::~ALNiangCardInfoLayer()
 
 void ALNiangCardInfoLayer::registerNotification()
 {
+    NotificationCenter::getInstance()->removeAllObservers(this);
+    
     // 刷新娘卡
     NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALNiangCardInfoLayer::refreshNiangCardObserverFunc), NND_RefreshUserNiangCard, NULL);
 }

@@ -1,58 +1,25 @@
 obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  jni/../../../Classes/GamePKScene.cpp jni/../../../Classes/GamePKScene.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWidget.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCProtectedNode.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNode.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccMacros.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCConsole.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/cdefs.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/api-level.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/time.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdint.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/_types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/_types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/_wchar_limits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/posix_types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/stddef.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/compiler.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/posix_types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/time.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/signal.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/limits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/limits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/limits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/internal_types.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/limits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/syslimits.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/page.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/string.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/malloc.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/signal.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm-generic/signal.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/sigcontext.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/siginfo.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm-generic/siginfo.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/ucontext.h \
- /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/user.h \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCRef.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformMacros.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCAsyncTaskPool.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformMacros.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformDefine.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCDirector.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCRef.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCVector.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccMacros.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCConsole.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCStdC.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/android/CCStdC-android.h \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/math.h \
@@ -63,8 +30,9 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccRandom.h \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/random \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCVector.h \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCProtocols.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccTypes.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../math/CCGeometry.h \
@@ -103,62 +71,6 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCComponentContainer.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCMap.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCComponent.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutParameter.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIExport.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIDefine.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ObjectFactory.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayout.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCCustomCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGroupCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIButton.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UICheckBox.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIAbstractCheckButton.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRadioButton.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIImageView.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIText.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextAtlas.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILoadingBar.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScrollView.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIListView.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UISlider.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextField.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCQuadCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGLProgramState.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFontAtlas.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextBMFont.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIPageView.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHelper.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRichText.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHBox.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVBox.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRelativeBox.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVideoPlayer.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWebView.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIDeprecated.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScale9Sprite.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteFrame.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAutoPolygon.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCImage.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTrianglesCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteBatchNode.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTextureAtlas.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCBatchCommand.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
- jni/../../../Classes/IconSprite.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCAsyncTaskPool.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCDirector.h \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCGLView.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCScheduler.h \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
@@ -179,11 +91,18 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCActionInterval.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAction.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAnimation.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteFrame.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAutoPolygon.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCImage.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTrianglesCommand.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGLProgramState.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCConsole.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCDirector.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDispatcher.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCMap.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCNS.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCProfiling.h \
@@ -192,6 +111,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCRefPtr.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCScheduler.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCUserDefault.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCValue.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCVector.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ZipUtils.h \
@@ -249,16 +169,22 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCActionTween.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTweenFunction.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAtlasNode.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCQuadCommand.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCClippingNode.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGroupCommand.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCCustomCommand.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCClippingRectangleNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCDrawNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCDrawingPrimitives.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFontFNT.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFont.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFontAtlas.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelAtlas.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAtlasNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelBMFont.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelTTF.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLayer.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCMenu.h \
@@ -269,6 +195,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNodeGrid.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleBatchNode.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCBatchCommand.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleExamples.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleSystemQuad.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleSystem.h \
@@ -279,6 +206,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCRenderTexture.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSprite.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCDrawNode.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTextureAtlas.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTransition.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTransitionPageTurn.h \
@@ -362,6 +290,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTextureAtlas.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParallaxNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTMXLayer.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteBatchNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTMXXMLParser.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCSAXParser.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTMXObjectGroup.h \
@@ -418,7 +347,42 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../../Classes/GameConfig.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWidget.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCProtectedNode.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutParameter.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIExport.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIDefine.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ObjectFactory.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayout.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIButton.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UICheckBox.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIAbstractCheckButton.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRadioButton.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIImageView.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIText.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextAtlas.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILoadingBar.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScrollView.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIListView.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UISlider.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextField.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextBMFont.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIPageView.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHelper.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRichText.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHBox.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVBox.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRelativeBox.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVideoPlayer.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWebView.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIDeprecated.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScale9Sprite.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
+ jni/../../../Classes/IconSprite.h jni/../../../Classes/ALGameConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocosStudioExport.h \
@@ -500,17 +464,51 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/GamePKScene.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpRequest.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpResponse.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpCookie.h \
- jni/../../../Classes/ALMusicUtil.h
+ jni/../../../Classes/StartGameScene.h \
+ jni/../../../Classes/ALPlayerData.h jni/../../../Classes/ALUserData.h \
+ jni/../../../Classes/ReadyGameLayer.h jni/../../../Classes/ALBaseLayer.h \
+ jni/../../../Classes/ALNetControl.h jni/../../../Classes/ALNetDefine.h \
+ jni/../../../Classes/ALGameResultInfoModel.h \
+ jni/../../../Classes/ALNotificationNameDefine.h \
+ jni/../../../Classes/GameOverLayer.h \
+ jni/../../../Classes/ALDrawNiangCardLayer.h \
+ jni/../../../Classes/ALDrawCardResultInfoModel.h \
+ jni/../../../Classes/ALAlertUtil.h jni/../../../Classes/ALMusicUtil.h \
+ jni/../../../Classes/ALUserInfoModel.h \
+ jni/../../../Classes/ALGameFriendInfoModel.h \
+ jni/../../../Classes/ALToastUtil.h jni/../../../Classes/ALHelpTools.h \
+ jni/../../../Classes/ALNetworkHelper.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/timeb.h
 
 jni/../../../Classes/GamePKScene.h:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h:
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWidget.h:
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCProtectedNode.h:
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNode.h:
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCAsyncTaskPool.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformMacros.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformDefine.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h:
+
+/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCDirector.h:
+
+/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack:
+
+/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCRef.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCVector.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccMacros.h:
 
@@ -518,97 +516,11 @@ jni/../../../Classes/GamePKScene.h:
 
 /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h:
 
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/cdefs.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/cdefs_elf.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/api-level.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/time.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdint.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/_types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/_types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/_wchar_limits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/posix_types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/stddef.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/compiler.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/posix_types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/kernel.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/sysmacros.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/time.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/signal.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/limits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/limits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/linux/limits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/internal_types.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/limits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/syslimits.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/page.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/string.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/malloc.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/signal.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm-generic/signal.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/sigcontext.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm/siginfo.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/asm-generic/siginfo.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/ucontext.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/user.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread:
-
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCRef.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformMacros.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformDefine.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCStdC.h:
 
@@ -630,9 +542,11 @@ jni/../../../Classes/GamePKScene.h:
 
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/random:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCVector.h:
-
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCNode.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCProtocols.h:
 
@@ -710,118 +624,6 @@ jni/../../../Classes/GamePKScene.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCComponent.h:
 
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutParameter.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIExport.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIDefine.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ObjectFactory.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayout.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCCustomCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGroupCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIButton.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UICheckBox.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIAbstractCheckButton.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRadioButton.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIImageView.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIText.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextAtlas.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILoadingBar.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScrollView.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIListView.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UISlider.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextField.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCQuadCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGLProgramState.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFontAtlas.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextBMFont.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIPageView.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHelper.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRichText.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHBox.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVBox.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRelativeBox.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVideoPlayer.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWebView.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIDeprecated.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScale9Sprite.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteFrame.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAutoPolygon.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCImage.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTrianglesCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteBatchNode.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTextureAtlas.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCBatchCommand.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h:
-
-jni/../../../Classes/IconSprite.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCAsyncTaskPool.h:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCDirector.h:
-
-/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack:
-
-/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h:
-
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCGLView.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCScheduler.h:
@@ -862,6 +664,18 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAnimation.h:
 
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteFrame.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAutoPolygon.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCImage.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTrianglesCommand.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGLProgramState.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCConsole.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h:
@@ -871,6 +685,8 @@ jni/../../../Classes/IconSprite.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDispatcher.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCIMEDelegate.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCMap.h:
 
@@ -887,6 +703,8 @@ jni/../../../Classes/IconSprite.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCScheduler.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCUserDefault.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCData.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCValue.h:
 
@@ -1002,7 +820,15 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAtlasNode.h:
 
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCQuadCommand.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCClippingNode.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCGroupCommand.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCRenderCommand.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCCustomCommand.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCClippingRectangleNode.h:
 
@@ -1016,11 +842,15 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h:
 
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCFontAtlas.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelAtlas.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCAtlasNode.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelBMFont.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabel.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCLabelTTF.h:
 
@@ -1042,6 +872,8 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleBatchNode.h:
 
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCBatchCommand.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleExamples.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCParticleSystemQuad.h:
@@ -1061,6 +893,8 @@ jni/../../../Classes/IconSprite.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCDrawNode.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../renderer/CCTextureAtlas.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCScene.h:
 
@@ -1228,6 +1062,8 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTMXLayer.h:
 
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCSpriteBatchNode.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTMXXMLParser.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCSAXParser.h:
@@ -1340,7 +1176,79 @@ jni/../../../Classes/IconSprite.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../../Classes/GameConfig.h:
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/CocosGUI.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWidget.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCProtectedNode.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutParameter.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIExport.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/GUIDefine.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ObjectFactory.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayout.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIButton.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UICheckBox.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIAbstractCheckButton.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRadioButton.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIImageView.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIText.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextAtlas.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILoadingBar.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScrollView.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIListView.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UISlider.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextField.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../2d/CCTextFieldTTF.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UITextBMFont.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIPageView.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHelper.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRichText.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIHBox.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVBox.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIRelativeBox.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIVideoPlayer.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIWebView.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIDeprecated.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIScale9Sprite.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UIEditBox/UIEditBox.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h:
+
+jni/../../../Classes/IconSprite.h:
+
+jni/../../../Classes/ALGameConfig.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
 
@@ -1504,4 +1412,42 @@ jni/../../../Classes/ALImageView.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpCookie.h:
 
+jni/../../../Classes/StartGameScene.h:
+
+jni/../../../Classes/ALPlayerData.h:
+
+jni/../../../Classes/ALUserData.h:
+
+jni/../../../Classes/ReadyGameLayer.h:
+
+jni/../../../Classes/ALBaseLayer.h:
+
+jni/../../../Classes/ALNetControl.h:
+
+jni/../../../Classes/ALNetDefine.h:
+
+jni/../../../Classes/ALGameResultInfoModel.h:
+
+jni/../../../Classes/ALNotificationNameDefine.h:
+
+jni/../../../Classes/GameOverLayer.h:
+
+jni/../../../Classes/ALDrawNiangCardLayer.h:
+
+jni/../../../Classes/ALDrawCardResultInfoModel.h:
+
+jni/../../../Classes/ALAlertUtil.h:
+
 jni/../../../Classes/ALMusicUtil.h:
+
+jni/../../../Classes/ALUserInfoModel.h:
+
+jni/../../../Classes/ALGameFriendInfoModel.h:
+
+jni/../../../Classes/ALToastUtil.h:
+
+jni/../../../Classes/ALHelpTools.h:
+
+jni/../../../Classes/ALNetworkHelper.h:
+
+/Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/timeb.h:

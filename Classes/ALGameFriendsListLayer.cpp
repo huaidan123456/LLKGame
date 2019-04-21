@@ -8,9 +8,13 @@
 #include "ALGameFriendsListLayer.h"
 #include "ALGameFriendInfoModel.h"
 #include "cocostudio/CocoStudio.h"
+#include "ALMusicUtil.h"
 #include "ALUserData.h"
+#include "ALPlayerData.h"
 #include "ALNotificationNameDefine.h"
 #include "ALGameInviteeAlertLayer.h"
+#include "ALGameInviterAlertLayer.h"
+#include "ALNetControl.h"
 
 
 USING_NS_CC;
@@ -23,8 +27,7 @@ ALGameFriendsListLayer* ALGameFriendsListLayer::create()
 {
     ALGameFriendsListLayer* layer = new (std::nothrow)ALGameFriendsListLayer();
     if (layer && layer->init()) {
-        layer->initYueCallback();
-        layer->initUI();
+        layer->baseInit();
         layer->autorelease();
         return layer;
     }else{
@@ -36,8 +39,7 @@ ALGameFriendsListLayer* ALGameFriendsListLayer::create()
 ALGameFriendsListLayer::ALGameFriendsListLayer()
 {
     _isRefreshFriendList = false;
-    
-    
+
 //    for (int i = 1; i < 12; ++i) {
 //        auto model = ALGameFriendInfoModel::create();
 //        model->setUid(i);
@@ -47,16 +49,34 @@ ALGameFriendsListLayer::ALGameFriendsListLayer()
 //        model->setName(StringUtils::format("连连看A-%d",i).c_str());
 //        ALUserData::gameFriends.insert(model->getUid(),model);
 //    }
-    
-    
-    
-    
 }
 
 
 ALGameFriendsListLayer::~ALGameFriendsListLayer()
 {
+    CCLOG("~ALGameFriendsListLayer");
+    unscheduleAllCallbacks();
+    NotificationCenter::getInstance()->removeAllObservers(this);
+}
+
+
+void ALGameFriendsListLayer::baseInit()
+{
+    initYueCallback();
+    initUI();
+    registerNotification();
+}
+
+
+void ALGameFriendsListLayer::registerNotification()
+{
+    NotificationCenter::getInstance()->removeAllObservers(this);
     
+    //更新好友状态
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameFriendsListLayer::refreshGameFriendListObserverFunc), NND_RefreshGameFriendList, NULL);
+    
+    // 接收到对方拒绝约战
+     NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameFriendsListLayer::receiveFriendRefuseFightObserverFunc), NND_RefuseInviteFlageGame, NULL);
 }
 
 
@@ -66,25 +86,31 @@ void ALGameFriendsListLayer::initUI()
     noFriendSign = (Sprite*)baseNode->getChildByName("s_noFriendSign");
     backBtn = (Button*)baseNode->getChildByName("btn_back");
     backBtn->addClickEventListener([=](Ref* btn){
+        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         this->setVisible(false);
     });
     
     listView = (ListView*)baseNode->getChildByName("listView");
     listView->setScrollBarOpacity(0);
     this->addChild(baseNode);
+    
+    inviterAlertLayer = ALGameInviterAlertLayer::create();
+    inviterAlertLayer->setupDisappearCallback([=]{
+        ALPlayerData::isResponseInviterNotification = true;
+    });
+    inviterAlertLayer->setVisible(false);
+    this->addChild(inviterAlertLayer,100);
+    
 }
 
 
 void ALGameFriendsListLayer::initYueCallback()
 {
     _yueCallback = [=](int friendId){
-        // TODO: todo:发送给服务器约战消息
-        // TODO: todo:弹出Alert
-        ALGameInviteeAlertLayer::makeInviteeAlert(this, ALUserData::gameFriends.at(friendId), [=](bool isAgree){
-            CCLOG("是否同意  %d",isAgree);
-        });
-        
+        ALNetControl::requestFightWithFriend(friendId);
         CCLOG("friendid  = %d",friendId);
+        inviterAlertLayer->showAlertWithUserInfo(ALUserData::gameFriends.at(friendId));
+        ALPlayerData::isResponseInviterNotification = false;
     };
 }
 
@@ -95,7 +121,18 @@ void ALGameFriendsListLayer::layerWillAppear()
 //    if (_isRefreshFriendList) {
 //        refreshFriendList();
 //    }
-//    refreshFriendList();
+    if (ALUserData::isRefreshFriendList) {
+        refreshFriendList();
+        ALUserData::isRefreshFriendList = false;
+    }
+    
+    schedule([=](float ft){
+        if (ALUserData::isRefreshFriendList) {
+            refreshFriendList();
+            ALUserData::isRefreshFriendList = false;
+        }
+        
+    }, 2.f, DF_ALGFLL_SCHEDULE_NAME_updateFriends);
     
 }
 
@@ -166,25 +203,43 @@ void ALGameFriendsListLayer::refreshFriendList()
 
 
 
-
-
-
-
-
-
-
-
-
 /**
  *  更新好友状态
  */
 void ALGameFriendsListLayer::refreshGameFriendListObserverFunc(Ref* ref)
 {
     Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
-        if (this->isVisible()) {
-            this->refreshFriendList();
-        }else{
-            _isRefreshFriendList = true;
+//        if (this->isVisible()) {
+//            this->refreshFriendList();
+//        }else{
+//            _isRefreshFriendList = true;
+//        }
+
+        this->refreshFriendList();
+    });
+    
+}
+
+
+void ALGameFriendsListLayer::hideInviterAlertLayerWithState(bool isReceive)
+{
+    inviterAlertLayer->setupSignState((isReceive ? ALGameInviterAlertLayer::INVITE_STATE::AGREE_SIGN : ALGameInviterAlertLayer::INVITE_STATE::REFUSE_SIGN));
+    inviterAlertLayer->hideAlertWithDelay(0.3f);
+}
+
+
+/**
+ *  接收到对方拒绝约战
+ */
+void ALGameFriendsListLayer::receiveFriendRefuseFightObserverFunc(Ref* ref)
+{
+    String* uidStr = (String*)ref;
+    int uid = uidStr->intValue();
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,uid,this]()->void{
+        if (inviterAlertLayer->isVisible() && uid == inviterAlertLayer->getFriendUid())
+        {
+            inviterAlertLayer->setupSignState(ALGameInviterAlertLayer::INVITE_STATE::REFUSE_SIGN);
+            inviterAlertLayer->hideAlertWithDelay(1.f);
         }
     });
 }

@@ -478,8 +478,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALDrawNiangCardL
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCBoneNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h \
  jni/../../../Classes/ALDrawCardResultInfoModel.h \
- jni/../../../Classes/StartGameScene.h jni/../../../Classes/ALMusicUtil.h \
- jni/../../../Classes/ALGameHelpUtil.h
+ jni/../../../Classes/ALMusicUtil.h jni/../../../Classes/ALGameHelpUtil.h
 
 jni/../../../Classes/ALDrawNiangCardLayer.h:
 
@@ -1436,8 +1435,6 @@ jni/../../../Classes/ALBaseLayer.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h:
 
 jni/../../../Classes/ALDrawCardResultInfoModel.h:
-
-jni/../../../Classes/StartGameScene.h:
 
 jni/../../../Classes/ALMusicUtil.h:
 

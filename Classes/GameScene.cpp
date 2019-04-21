@@ -25,12 +25,17 @@
 #include "ALToastUtil.h"
 #include "ALHelpTools.h"
 #include "ALNetworkHelper.h"
+#include "network/HttpClient.h"
+#include "ALMD5Encode.h"
+#include <sys/timeb.h>
 
+#include "ALGameConfig.h"
 
 
 
 USING_NS_CC;
 using namespace cocos2d::ui;
+using namespace network;
 
 //#define DF_START_POINT_X 75          // 第二个icon的Y坐标
 //#define DF_START_POINT_Y 970         // 第一个icon的Y坐标
@@ -93,6 +98,8 @@ GameScene::~GameScene()
     _gameResultInfo = NULL;
     unscheduleAllCallbacks();
     NotificationCenter::getInstance()->removeAllObservers(this);
+    ALPlayerData::resetPlayerData();
+    
     log("GameScene 析构");
 }
 
@@ -123,21 +130,26 @@ void GameScene::baseInit()
 
 void GameScene::initScheduler()
 {
-    unschedule(DF_ALNetworkHelper_SCHEDULE_Check_network);
-    /**
-     *  实时监测网路状况
-     */
-    schedule([=](float ft){
-        if (!ALNetworkHelper::checkCurrentNetworkState()) {
-            if (ALNetControl::isConnect()) {
-                ALNetControl::closeConnect();
+    if(ALGameConfig::DebugType == GAME_PRODUCTION){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        unschedule(DF_ALNetworkHelper_SCHEDULE_Check_network);
+        /**
+         *  实时监测网路状况
+         */
+        schedule([=](float ft){
+            if (!ALNetworkHelper::checkCurrentNetworkState()) {
+                if (ALNetControl::isConnect()) {
+                    ALNetControl::closeConnect();
+                }
             }
-        }
-    }, 1, DF_ALNetworkHelper_SCHEDULE_Check_network);
+        }, 1, DF_ALNetworkHelper_SCHEDULE_Check_network);
+#endif
+    }
 }
 
 void GameScene::registerNotification()
 {
+    NotificationCenter::getInstance()->removeAllObservers(this);
     // 断开连接
     NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(GameScene::disConnectObserverFunc), NND_Disconnect, NULL);
     
@@ -223,7 +235,10 @@ void GameScene::initSystemAIData()
     // 首先分为7个阶段，每个阶段分为有5次消除操作
     int count = 0; // 阶段次数
 
-    srand((unsigned int)time(NULL));
+    struct timeb timeSeed;
+    ftime(&timeSeed);
+    srand(timeSeed.time * 1000 + timeSeed.millitm);
+//    srand((unsigned int)time(NULL));
     CCRANDOM_0_1();// 先做一次空随机
     for (int i = 0 ; i < 7; ++i) {
         count = 0;
@@ -257,7 +272,7 @@ void GameScene::initUI()
     this->addChild(restartBtn,999);
     */
     
-//    // 加轻豆
+    // 加轻豆
 //    auto restartBtn = Button::create("images/icon_normal_1.png");
 //    restartBtn->setPosition(Vec2(650, 1230));
 //    restartBtn->setTitleText("加轻豆");
@@ -267,19 +282,19 @@ void GameScene::initUI()
 //        ALNetControl::requestGetQingDou(2000);
 //    });
 //    this->addChild(restartBtn,999);
-//
-//     //自动消除
-//    auto autoBtn = Button::create("images/icon_normal_1.png");
-//    autoBtn->setPosition(Vec2(400, 1230));
-//    autoBtn->setTitleText("自动");
-//    autoBtn->setTitleColor(Color3B::RED);
-//    autoBtn->setTitleFontSize(32);
-//    autoBtn->addClickEventListener([&,this](Ref*btn){
-//        this->autoClear();
-//    });
-//    this->addChild(autoBtn,999);
-    
-    
+
+     //自动消除
+    auto autoBtn = Button::create("images/icon_normal_1.png");
+    autoBtn->setPosition(Vec2(400, 1230));
+    autoBtn->setTitleText("自动");
+    autoBtn->setTitleColor(Color3B::RED);
+    autoBtn->setTitleFontSize(32);
+    autoBtn->addClickEventListener([&,this](Ref*btn){
+        this->autoClear();
+    });
+    this->addChild(autoBtn,999);
+
+
     // ---------------------------------------
     
     
@@ -289,8 +304,25 @@ void GameScene::initUI()
     backBtn->addClickEventListener([&,this](Ref*btn){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         ALAlertUtil::makeAlertOfExitGame(this, [&,this]{
-            Director::getInstance()->replaceScene(StartGameScene::create());
+            if (!_isLeaveGame) {
+                Director::getInstance()->replaceScene(StartGameScene::create());
+                _isLeaveGame = true;
+                this->unschedule("schedule_leaveGame");
+                this->scheduleOnce([=](float ft){
+                    _isLeaveGame = false;
+                }, 1.f, "schedule_leaveGame");
+            }
         });
+    });
+    
+    soundSwitchBtn = (Button*)gameLayer->getChildByName("btn_sound");
+    soundSwitchBtn->loadTextureNormal(ALMusicUtil::getInstrins()->getSoundSwitch() ? "images/mms_btn_music_on.png" : "images/mms_btn_music_off.png");
+    soundSwitchBtn->addClickEventListener([&,this](Ref* btn){
+        ALMusicUtil::getInstrins()->setSoundSwitch(!ALMusicUtil::getInstrins()->getSoundSwitch());
+        if (ALMusicUtil::getInstrins()->getSoundSwitch()) {
+            ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+        }
+        soundSwitchBtn->loadTextureNormal(ALMusicUtil::getInstrins()->getSoundSwitch() ? "images/mms_btn_music_on.png" : "images/mms_btn_music_off.png");
     });
     
 
@@ -398,6 +430,21 @@ void GameScene::initUI()
     // 游戏结束界面
     gameOverLayer = GameOverLayer::create();
     gameOverLayer->setVisible(false);
+    gameOverLayer->setupConcernState(ALPlayerData::opponentInfo->isConcern());
+    gameOverLayer->setupConcernCallback([=](int opponentUid){
+        std::string token = ALMD5Encode::MD5Encode(StringUtils::format("*$#VCG12HHIOasas@#@3{\"id\":\"%d\",\"user_by_id\":\"%d\"}",ALUserData::loginUid,opponentUid));
+        std::string url = StringUtils::format("https://api.qingdian.cn/gameapi/gameAttentionUser?id=%d&user_by_id=%d&token=%s",ALUserData::loginUid,opponentUid,token.c_str());
+        CCLOG("url = %s",url.c_str());
+        HttpRequest *request = new HttpRequest();
+        request->setUrl(url.c_str());
+        request->setRequestType(HttpRequest::Type::GET);
+        request->setResponseCallback([=](HttpClient* client, HttpResponse* response){
+            if (response && response->isSucceed()){
+            }
+        });
+        HttpClient::getInstance()->sendImmediate(request);
+        request->release();
+    });
     gameOverLayer->setupGameAgainCallback([&,this]{
         // 再来一局的回调
         log("再来一局的回调");
@@ -406,7 +453,10 @@ void GameScene::initUI()
             log("再来一局的回调");
             gameOverLayer->setupGameAgainState(GameOverLayer::GameAgainState::waitState);
             // 电脑自动应答
-            srand((unsigned int)time(NULL));
+            struct timeb timeSeed;
+            ftime(&timeSeed);
+            srand(timeSeed.time * 1000 + timeSeed.millitm);
+//            srand((unsigned int)time(NULL));
             CCRANDOM_0_1();//空随机一次
             float delay = CCRANDOM_0_1() * 2.f + 2.f; // 2秒到4秒之间
             log("电脑邀请 随机延迟时间 %f",delay);
@@ -433,7 +483,14 @@ void GameScene::initUI()
     });
     gameOverLayer->setupBackCallback([&,this]{
         // 返回的回调
-        Director::getInstance()->replaceScene(StartGameScene::create());
+        if (!_isLeaveGame) {
+            Director::getInstance()->replaceScene(StartGameScene::create());
+            _isLeaveGame = true;
+            this->unschedule("schedule_leaveGame");
+            this->scheduleOnce([=](float ft){
+                _isLeaveGame = false;
+            }, 1.f, "schedule_leaveGame");
+        }
     });
     gameOverLayer->setupDrawCardCallback([&,this]{
         // 抽卡回调
@@ -447,7 +504,10 @@ void GameScene::initUI()
     });
     // 游戏结束
     gameOverLayer->setupGameOverShowCompleteCallback([&,this]{
-        srand((unsigned int)time(NULL));
+        struct timeb timeSeed;
+        ftime(&timeSeed);
+        srand(timeSeed.time * 1000 + timeSeed.millitm);
+//        srand((unsigned int)time(NULL));
         CCRANDOM_0_1();//空随机一次
         float delay = CCRANDOM_0_1() * 3.f + 2.f; // 2秒到5秒之间
         log("电脑邀请 随机延迟时间 %f",delay);
@@ -470,6 +530,17 @@ void GameScene::initUI()
     
     //抽卡展示页面
     drawCardLayer = ALDrawNiangCardLayer::create();
+    drawCardLayer->setupLookCardInfoCallbakc([=](int cardIndex){
+        
+        if (!_isLeaveGame) {
+            Director::getInstance()->replaceScene(StartGameScene::createWithShowCardInfo(cardIndex-1));
+            _isLeaveGame = true;
+            this->unschedule("schedule_leaveGame");
+            this->scheduleOnce([=](float ft){
+                _isLeaveGame = false;
+            }, 1.f, "schedule_leaveGame");
+        }
+    });
     drawCardLayer->setVisible(false);
     this->addChild(drawCardLayer,22);
     
@@ -483,7 +554,10 @@ void GameScene::initDataMap()
     for (int i = 0; i < DF_ICON_COUNT; ++i) {
         typeArray[i] = i+1;
     }
-    srand((unsigned int)time(NULL));
+//    srand((unsigned int)time(NULL));
+    struct timeb timeSeed;
+    ftime(&timeSeed);
+    srand(timeSeed.time * 1000 + timeSeed.millitm);
     int tempIndex;
     for (int i = 0; i < DF_ICON_COUNT; ++i) {
         tempIndex = (int)(CCRANDOM_0_1()*(DF_ICON_COUNT-1-i));
@@ -533,7 +607,10 @@ void GameScene::drawMap()
 
 void GameScene::changeDataMap()
 {
-    srand((unsigned int)time(NULL));
+//    srand((unsigned int)time(NULL));
+    struct timeb timeSeed;
+    ftime(&timeSeed);
+    srand(timeSeed.time * 1000 + timeSeed.millitm);
     int tempX,tempY,tempM;
     
     // 遍历地图数组，随机换位置
@@ -541,9 +618,11 @@ void GameScene::changeDataMap()
         for (int y = 0; y < _yCount; ++y) {
             tempX = (int)(CCRANDOM_0_1() * _xCount);
             tempY = (int)(CCRANDOM_0_1() * _yCount);
-            tempM = _dataMap[x][y];
-            _dataMap[x][y] = _dataMap[tempX][tempY];
-            _dataMap[tempX][tempY] = tempM;
+            if (tempX >= 0 && tempX < _xCount && tempY >= 0 && tempY < _yCount) {
+                tempM = _dataMap[x][y];
+                _dataMap[x][y] = _dataMap[tempX][tempY];
+                _dataMap[tempX][tempY] = tempM;
+            }
         }
     }
     // 将选中的数组清空
@@ -616,7 +695,7 @@ bool GameScene::isLink(cocos2d::Vec2 v1, cocos2d::Vec2 v2)
         if (isLinkStraight(v1, v2)) {
             _pathVector.push_back(v1);
             _pathVector.push_back(v2);
-            log("=== 是直线连接");
+//            log("=== 是直线连接");
             return true;
         }
         
@@ -627,7 +706,7 @@ bool GameScene::isLink(cocos2d::Vec2 v1, cocos2d::Vec2 v2)
                 _pathVector.push_back(v1);
                 _pathVector.push_back(point);
                 _pathVector.push_back(v2);
-                log("=== 有一个拐角");
+//                log("=== 有一个拐角");
                 return true;
             }
         }
@@ -639,7 +718,7 @@ bool GameScene::isLink(cocos2d::Vec2 v1, cocos2d::Vec2 v2)
                 _pathVector.push_back(v1);
                 _pathVector.push_back(point);
                 _pathVector.push_back(v2);
-                log("=== 有一个拐角");
+//                log("=== 有一个拐角");
                 return true;
             }
         }
@@ -660,7 +739,7 @@ bool GameScene::isLink(cocos2d::Vec2 v1, cocos2d::Vec2 v2)
                         _pathVector.push_back(pt1);
                         _pathVector.push_back(pt2);
                         _pathVector.push_back(v2);
-                        log("=== 有两个拐角 = x轴");
+//                        log("=== 有两个拐角 = x轴");
                         return true;
                     }else{
                         if (isLinkStraight(pt1, pt2)) {
@@ -668,7 +747,7 @@ bool GameScene::isLink(cocos2d::Vec2 v1, cocos2d::Vec2 v2)
                             _pathVector.push_back(pt1);
                             _pathVector.push_back(pt2);
                             _pathVector.push_back(v2);
-                            log("=== 有两个拐角 = x轴");
+//                            log("=== 有两个拐角 = x轴");
                             return true;
                         }
                     }
@@ -1043,15 +1122,28 @@ void GameScene::restartGame()
 void GameScene::GameOver()
 {
     this->unschedule(DF_SCHEDULE_systemAI);
-    _gameOver = true;
-    
-    if (_leftClearIconCount >= _rightClearIconCount) {
-        log("玩家获胜");
-        ALNetControl::sendStandAloneGameResult(true);
-    }else{
-        log("对方获胜");
-        ALNetControl::sendStandAloneGameResult(false);
+    if (!_gameOver) {
+        _gameOver = true;
+        
+        if(ALGameConfig::DebugType == GAME_PRODUCTION){
+            if (_leftClearIconCount >= _rightClearIconCount) {
+                log("玩家获胜");
+                ALNetControl::sendStandAloneGameResult(true);
+            }else{
+                log("对方获胜");
+                ALNetControl::sendStandAloneGameResult(false);
+            }
+        }else{
+            ALGameResultInfoModel* model = ALGameResultInfoModel::create();
+            model->gameResult = _leftClearIconCount >= _rightClearIconCount;
+            model->addExp = 20;
+            model->addQingdao = 30;
+            model->retain();
+            cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetStandAloneGameResult,model);
+        }
+        
     }
+    
 }
 
 void GameScene::showGameResult()
@@ -1073,7 +1165,7 @@ void GameScene::showGameResult()
 bool GameScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     auto point = touch->getLocation();
-    CCLOG("Location point x=%f, y=%f", point.x, point.y);
+//    CCLOG("Location point x=%f, y=%f", point.x, point.y);
     return true;
 }
 
@@ -1097,7 +1189,7 @@ void GameScene::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
     if (py <= df_startPointY + 70) {
         // 获取_dataMap 坐标
         auto point = scenePositionToIndex(px, py);
-        log("转化成 Map坐标 (%f,%f)",point.x,point.y);
+//        log("转化成 Map坐标 (%f,%f)",point.x,point.y);
         
         if (point.x >= 0 && point.y >= 0) {
             int x = point.x;
@@ -1191,7 +1283,6 @@ void GameScene::getGameResultObserverFunc(Ref* ref)
 void GameScene::getDrawNiangCardResultObserverFunc(cocos2d::Ref *ref)
 {
     ALDrawCardResultInfoModel* model = (ALDrawCardResultInfoModel*)ref;
-    model->retain();
     Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,model,this]()->void{
         drawCardLayer->showWithInfo(model);
     });
@@ -1216,7 +1307,15 @@ void GameScene::disConnectObserverFunc(Ref* ref)
         if (!_closeDisconnectNotfication) {
             this->pauseGame();
             ALAlertUtil::makeAlertOfDisconnect(this, [&,this]{
-                Director::getInstance()->replaceScene(StartGameScene::create());
+                if (!_isLeaveGame) {
+                    Director::getInstance()->replaceScene(StartGameScene::create());
+                    _isLeaveGame = true;
+                    this->unschedule("schedule_leaveGame");
+                    this->scheduleOnce([=](float ft){
+                        _isLeaveGame = false;
+                    }, 1.f, "schedule_leaveGame");
+                }
+                
             });
             
         }else{
@@ -1242,8 +1341,14 @@ void GameScene::appDidEnterBackgroundObserverFunc(Ref* ref)
  */
 void GameScene::appWillEnterForegroundObserverFunc(Ref* ref)
 {
+    if (_appEnterBackgroundTime == 0) {
+        return;
+    }
+    
+    
     // 时间差
     int addTime = (int)( ALHelpTools::getCurrentTime() - _appEnterBackgroundTime )/ DF_SYSTEM_AI_INTERVAL;
+    _appEnterBackgroundTime = 0;
     CCLOG("GameScene  游戏恢复前台  增加的时间  = %ld",addTime);
     Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,addTime,this]()->void{
         CCLOG("是否连接   = %d",ALNetControl::isConnect());

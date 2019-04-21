@@ -28,12 +28,13 @@ ReadyGameLayer* ReadyGameLayer::create()
 
 ReadyGameLayer::ReadyGameLayer()
 {
-    
+    _isWaitThreadRun = true;
 }
 
 ReadyGameLayer::~ReadyGameLayer()
 {
-    
+    _isWaitThreadRun = false;
+    CCLOG("~ReadyGameLayer");
 }
 
 void ReadyGameLayer::baseInit()
@@ -69,6 +70,7 @@ void ReadyGameLayer::initUI()
 
 void ReadyGameLayer::layerWillAppear()
 {
+    _isWaitThreadRun = true;
     CCRANDOM_0_1();
     int index = ceilf(CCRANDOM_0_1()*3.f) ;
     CCLOG("index = %d",index);
@@ -77,6 +79,7 @@ void ReadyGameLayer::layerWillAppear()
 
 void ReadyGameLayer::layerDidDisappear()
 {
+    _isWaitThreadRun = false;
     progress->setPercentage(0);
     readGoSprite->setTexture("images/rggl_sign_ready.png");
     readGoSprite->setVisible(false);
@@ -116,7 +119,24 @@ void ReadyGameLayer::endProgressAndStartReadyGoAnimation(const ALReadGameAnimati
 }
 
 
-void ReadyGameLayer::startAniamtion(const ALReadGameAnimationCallback &waitCallback, const ALReadGameAnimationCallback &endCallback)
+//void ReadyGameLayer::startAniamtion(const ALReadGameAnimationCallback &waitCallback, const ALReadGameAnimationCallback &endCallback)
+//{
+//    _endCallback = endCallback;
+//    progress->setVisible(true);
+//    progressBg->setVisible(true);
+//    progressTxt->setVisible(true);
+//    progress->runAction(Sequence::create(ProgressTo::create(0.8, 80),CallFunc::create([&,waitCallback]{
+//        if (waitCallback) {
+//            std::thread t1(&ReadyGameLayer::waitThread,this,waitCallback);
+//            t1.detach();
+//        }else{
+//            this->endProgressAndStartReadyGoAnimation(_endCallback);
+//        }
+//    }), NULL));
+//
+//}
+
+void ReadyGameLayer::startAniamtion(const ALReadGameWaitCallback &waitCallback, const ALReadGameAnimationCallback &endCallback)
 {
     _endCallback = endCallback;
     progress->setVisible(true);
@@ -130,15 +150,47 @@ void ReadyGameLayer::startAniamtion(const ALReadGameAnimationCallback &waitCallb
             this->endProgressAndStartReadyGoAnimation(_endCallback);
         }
     }), NULL));
+    
+}
 
+/**
+ *  直接执行动作 (waitCallback 是在子线程中执行的)
+ */
+void ReadyGameLayer::startAniamtion(const ALReadGameAnimationCallback& readyCallback,const ALReadGameWaitCallback& waitCallback,const ALReadGameAnimationCallback& endCallback)
+{
+    _endCallback = endCallback;
+    progress->setVisible(true);
+    progressBg->setVisible(true);
+    progressTxt->setVisible(true);
+    progress->stopAllActions();
+    progress->runAction(Sequence::create(ProgressTo::create(0.8, 80),CallFunc::create([=]{
+        if (readyCallback) {
+            readyCallback();
+        }
+        if (waitCallback) {
+            std::thread t1(&ReadyGameLayer::waitThread,this,waitCallback);
+            t1.detach();
+        }else{
+            this->endProgressAndStartReadyGoAnimation(_endCallback);
+        }
+    }), NULL));
 }
 
 
-void ReadyGameLayer::waitThread(const ALReadGameAnimationCallback &waitCallback)
+void ReadyGameLayer::waitThread(const ALReadGameWaitCallback &waitCallback)
 {
     if (waitCallback) {
-        waitCallback();
+        while (_isWaitThreadRun && !(waitCallback()));
     }
-    this->endProgressAndStartReadyGoAnimation(_endCallback);
+    
+    if (_isWaitThreadRun) {
+        Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]()->void{
+            if (this) {
+                this->endProgressAndStartReadyGoAnimation(_endCallback);
+            }
+        });
+    }
+    
+    
 }
 

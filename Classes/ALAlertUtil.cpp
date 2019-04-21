@@ -65,42 +65,47 @@ void ALAlertUtil::makeAlertOfExitGame(cocos2d::Node *parentNode, const alAlertOk
     box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
 }
 
-
+/**
+ *  弹出断开连接的提示框
+ */
 void ALAlertUtil::makeAlertOfDisconnect(cocos2d::Node *parentNode, const alAlertOkCallback &callback)
 {
-    // 创建遮盖层
-    auto background = ImageView::create("images/background_BTM_50.png");
-    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    background->setTouchEnabled(true);
-    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
-    // 创建BOX
-    auto box = Sprite::create("images/alalert_box_disconnect.png");
-    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
-    // 确定按钮
-    auto okBtn = Button::create("images/alalert_btn_ok.png");
-    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
-    okBtn->addClickEventListener([&,callback](Ref*btn){
-        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
-        auto mbox = ((Button*)btn)->getParent();
-        auto mbg = mbox->getParent();
-        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
-            mbg->removeFromParent();
-        }),CallFunc::create([&,mbg,callback]{
-            if (callback) {
-                callback();
-            }
-        }), NULL));
-        
-    });
     
-    background->addChild(box);
-    box->addChild(okBtn);
-    parentNode->addChild(background,9999);
+    makeAlertWithTitleName("images/alalert_box_disconnect.png", parentNode, callback);
     
-    box->setScale(0.1);
-    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+//    // 创建遮盖层
+//    auto background = ImageView::create("images/background_BTM_50.png");
+//    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    background->setTouchEnabled(true);
+//    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
+//    // 创建BOX
+//    auto box = Sprite::create("images/alalert_box_disconnect.png");
+//    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
+//    // 确定按钮
+//    auto okBtn = Button::create("images/alalert_btn_ok.png");
+//    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
+//    okBtn->addClickEventListener([&,callback](Ref*btn){
+//        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+//        auto mbox = ((Button*)btn)->getParent();
+//        auto mbg = mbox->getParent();
+//        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
+//            mbg->removeFromParent();
+//        }),CallFunc::create([&,mbg,callback]{
+//            if (callback) {
+//                callback();
+//            }
+//        }), NULL));
+//
+//    });
+//
+//    background->addChild(box);
+//    box->addChild(okBtn);
+//    parentNode->addChild(background,9999);
+//
+//    box->setScale(0.1);
+//    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
 }
 
 
@@ -109,39 +114,146 @@ void ALAlertUtil::makeAlertOfDisconnect(cocos2d::Node *parentNode, const alAlert
  */
 void ALAlertUtil::makeAlertOfConnectTimeOut(cocos2d::Node* parentNode,const alAlertOkCallback& callback)
 {
-    // 创建遮盖层
-    auto background = ImageView::create("images/background_BTM_50.png");
-    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    background->setTouchEnabled(true);
-    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
-    // 创建BOX
-    auto box = Sprite::create("images/alalert_box_connectTimeOut.png");
-    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
-    // 确定按钮
-    auto okBtn = Button::create("images/alalert_btn_ok.png");
-    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
-    okBtn->addClickEventListener([&,callback](Ref*btn){
-        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
-        auto mbox = ((Button*)btn)->getParent();
-        auto mbg = mbox->getParent();
-        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
-            mbg->removeFromParent();
-        }),CallFunc::create([&,mbg,callback]{
-            if (callback) {
-                callback();
-            }
-        }), NULL));
-        
-    });
+    makeAlertWithTitleName("images/alalert_box_connectTimeOut.png", parentNode, callback);
     
-    background->addChild(box);
-    box->addChild(okBtn);
-    parentNode->addChild(background,9999);
+//    // 创建遮盖层
+//    auto background = ImageView::create("images/background_BTM_50.png");
+//    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    background->setTouchEnabled(true);
+//    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
+//    // 创建BOX
+//    auto box = Sprite::create("images/alalert_box_connectTimeOut.png");
+//    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
+//    // 确定按钮
+//    auto okBtn = Button::create("images/alalert_btn_ok.png");
+//    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
+//    okBtn->addClickEventListener([&,callback](Ref*btn){
+//        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+//        auto mbox = ((Button*)btn)->getParent();
+//        auto mbg = mbox->getParent();
+//        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
+//            mbg->removeFromParent();
+//        }),CallFunc::create([&,mbg,callback]{
+//            if (callback) {
+//                callback();
+//            }
+//        }), NULL));
+//
+//    });
+//
+//    background->addChild(box);
+//    box->addChild(okBtn);
+//    parentNode->addChild(background,9999);
+//
+//    box->setScale(0.1);
+//    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+}
+
+
+/**
+ *  弹出游戏匹配失败
+ */
+void ALAlertUtil::makeAlertOfMatchFail(cocos2d::Node* parentNode,const alAlertOkCallback& callback)
+{
     
-    box->setScale(0.1);
-    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+    makeAlertWithTitleName("images/alalert_box_matchFail.png", parentNode, callback);
+    
+//    // 创建遮盖层
+//    auto background = ImageView::create("images/background_BTM_50.png");
+//    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    background->setTouchEnabled(true);
+//    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
+//    // 创建BOX
+//    auto box = Sprite::create("images/alalert_box_matchFail.png");
+//    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
+//    // 确定按钮
+//    auto okBtn = Button::create("images/alalert_btn_ok.png");
+//    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
+//    okBtn->addClickEventListener([&,callback](Ref*btn){
+//        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+//        auto mbox = ((Button*)btn)->getParent();
+//        auto mbg = mbox->getParent();
+//        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
+//            mbg->removeFromParent();
+//        }),CallFunc::create([&,mbg,callback]{
+//            if (callback) {
+//                callback();
+//            }
+//        }), NULL));
+//
+//    });
+//
+//    background->addChild(box);
+//    box->addChild(okBtn);
+//    parentNode->addChild(background,9999);
+//
+//    box->setScale(0.1);
+//    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+}
+
+
+/**
+ *  游戏中断的提示框
+ */
+void ALAlertUtil::makeAlertOfGameInterruption(cocos2d::Node* parentNode,const alAlertOkCallback& callback)
+{
+    makeAlertWithTitleName("images/alalert_box_gameInterruption.png", parentNode, callback);
+    
+//    // 创建遮盖层
+//    auto background = ImageView::create("images/background_BTM_50.png");
+//    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    background->setTouchEnabled(true);
+//    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
+//    // 创建BOX
+//    auto box = Sprite::create("images/alalert_box_gameInterruption.png");
+//    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
+//    // 确定按钮
+//    auto okBtn = Button::create("images/alalert_btn_ok.png");
+//    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
+//    okBtn->addClickEventListener([&,callback](Ref*btn){
+//        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+//        auto mbox = ((Button*)btn)->getParent();
+//        auto mbg = mbox->getParent();
+//        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
+//            mbg->removeFromParent();
+//        }),CallFunc::create([&,mbg,callback]{
+//            if (callback) {
+//                callback();
+//            }
+//        }), NULL));
+//
+//    });
+//
+//    background->addChild(box);
+//    box->addChild(okBtn);
+//    parentNode->addChild(background,9999);
+//
+//    box->setScale(0.1);
+//    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+}
+
+
+/**
+ *  游戏已经结束的提示框  alalert_box_gameFightOverAndLeavel.png
+ */
+void ALAlertUtil::makeAlertOfFriendFightGameOver(cocos2d::Node* parentNode,const alAlertOkCallback& callback)
+{
+    makeAlertWithTitleName("images/alalert_box_gameFightOverAndLeavel.png", parentNode, callback);
+}
+
+
+/**
+ *  好友PK 游戏超时
+ */
+void ALAlertUtil::makeAlertOfFriendFightRoomTimeOut(cocos2d::Node* parentNode,const alAlertOkCallback& callback)
+{
+    makeAlertWithTitleName("images/alalert_box_PK_roomTimeOut.png", parentNode, callback);
 }
 
 
@@ -151,25 +263,81 @@ void ALAlertUtil::makeAlertOfConnectTimeOut(cocos2d::Node* parentNode,const alAl
  */
 void ALAlertUtil::makeAlertOfDontHaveEnoughQingDou(cocos2d::Node* parentNode)
 {
+    makeAlertWithTitleName("images/alalert_box_qingdouBuGou.png", parentNode, nullptr);
+//    // 创建遮盖层
+//    auto background = ImageView::create("images/background_BTM_50.png");
+//    background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    background->setTouchEnabled(true);
+//    background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
+//    // 创建BOX
+//    auto box = Sprite::create("images/alalert_box_qingdouBuGou.png");
+//    box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
+//    // 确定按钮
+//    auto okBtn = Button::create("images/alalert_btn_ok.png");
+//    okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+//    okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
+//    okBtn->addClickEventListener([&](Ref*btn){
+//        ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
+//        auto mbox = ((Button*)btn)->getParent();
+//        auto mbg = mbox->getParent();
+//        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg]{
+//            mbg->removeFromParent();
+//        }), NULL));
+//
+//    });
+//
+//    background->addChild(box);
+//    box->addChild(okBtn);
+//    parentNode->addChild(background,9999);
+//
+//    box->setScale(0.1);
+//    box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark --私有--
+void ALAlertUtil::makeAlertWithTitleName(const char* pathName,cocos2d::Node* parentNode,const alAlertOkCallback& callback)
+{
     // 创建遮盖层
     auto background = ImageView::create("images/background_BTM_50.png");
     background->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     background->setTouchEnabled(true);
     background->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2));
     // 创建BOX
-    auto box = Sprite::create("images/alalert_box_qingdouBuGou.png");
+    auto box = Sprite::create(pathName);
     box->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     box->setPosition(Vec2(DF_DesignSize.width/2, DF_DesignSize.height/2-20));
     // 确定按钮
     auto okBtn = Button::create("images/alalert_btn_ok.png");
     okBtn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     okBtn->setPosition(Vec2(box->getContentSize().width/2, okBtn->getContentSize().height*0.5+30));
-    okBtn->addClickEventListener([&](Ref*btn){
+    okBtn->addClickEventListener([&,callback](Ref*btn){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         auto mbox = ((Button*)btn)->getParent();
         auto mbg = mbox->getParent();
-        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg]{
+        mbox->runAction(Sequence::create(ScaleTo::create(0.3, 0.1),Hide::create(),CallFunc::create([&,mbg,callback]{
             mbg->removeFromParent();
+        }),CallFunc::create([&,mbg,callback]{
+            if (callback) {
+                callback();
+            }
         }), NULL));
         
     });
@@ -181,9 +349,6 @@ void ALAlertUtil::makeAlertOfDontHaveEnoughQingDou(cocos2d::Node* parentNode)
     box->setScale(0.1);
     box->runAction(Sequence::create(ScaleTo::create(0.3, 1), NULL));
 }
-
-
-
 
 
 

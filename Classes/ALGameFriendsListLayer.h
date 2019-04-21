@@ -13,6 +13,7 @@
 
 
 class ALGameFriendInfoModel;
+class ALGameInviterAlertLayer;
 class ALGameFriendsListLayer:public ALBaseLayer
 {
 public:
@@ -22,6 +23,13 @@ public:
     
     ALGameFriendsListLayer();
     ~ALGameFriendsListLayer();
+    
+    void baseInit();
+    
+    /**
+     *  注册通知
+     */
+    void registerNotification();
     
     void initUI();
     
@@ -33,6 +41,9 @@ public:
     
     virtual void layerDidDisappear() override;
     
+    
+    void hideInviterAlertLayerWithState(bool isReceive);
+    
 private:
     Node* baseNode;
     //** 没有好友的标记 *//
@@ -41,7 +52,8 @@ private:
     cocos2d::ui::ListView* listView;
     //** 返回按钮 *//
     cocos2d::ui::Button* backBtn;
-    
+    //** 邀请好友约战的layer *//
+    ALGameInviterAlertLayer* inviterAlertLayer;
     
     //** model vector *//
     std::vector<std::pair<int,ALGameFriendInfoModel*>> _friendVector;
@@ -64,6 +76,12 @@ private:
      *  更新好友状态
      */
     void refreshGameFriendListObserverFunc(Ref* ref);
+    
+    
+    /**
+     *  接收到对方拒绝约战
+     */
+    void receiveFriendRefuseFightObserverFunc(Ref* ref);
     
     
 };

@@ -385,8 +385,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/AppDelegate.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
  jni/../../../Classes/ALMusicUtil.h \
  jni/../../../Classes/ALNotificationNameDefine.h \
- jni/../../../Classes/ALPlayerData.h jni/../../../Classes/ALNetControl.h \
- jni/../../../Classes/ALNetDefine.h
+ jni/../../../Classes/ALPlayerData.h jni/../../../Classes/ALGameConfig.h
 
 jni/../../../Classes/AppDelegate.h:
 
@@ -1162,6 +1161,4 @@ jni/../../../Classes/ALNotificationNameDefine.h:
 
 jni/../../../Classes/ALPlayerData.h:
 
-jni/../../../Classes/ALNetControl.h:
-
-jni/../../../Classes/ALNetDefine.h:
+jni/../../../Classes/ALGameConfig.h:

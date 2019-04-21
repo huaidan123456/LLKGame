@@ -42,6 +42,15 @@ public:
     int getQingDouCount();
     void setQingDou(int count);
     
+    bool isConcern();
+    void setConcern(bool isConcern);
+    
+    
+    /**
+     *  重置
+     */
+    void resetModel();
+    
     
 private:
     int _uid;
@@ -57,6 +66,8 @@ private:
     int _sumExp;
     //** 当前用户的轻豆数量 *//
     int _qingDouCount;
+    //** 关注状态 （此属性用于账户玩家是否关注该用户） *//
+    bool _isConcern;
     
     
     

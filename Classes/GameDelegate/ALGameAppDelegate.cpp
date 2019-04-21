@@ -61,6 +61,9 @@ void ALGameAppDelegate::applicationDidEnterBackground() {
         Director::getInstance()->stopAnimation();
         //    ALMusicUtil::getInstrins()->stopAllMusicAndEffect();
         NotificationCenter::getInstance()->postNotification(NND_AppDidEnterBackground);
+        
+        //暂停背景音乐
+        ALMusicUtil::getInstrins()->pauseSound();
     }
     
 }
@@ -72,6 +75,9 @@ void ALGameAppDelegate::applicationWillEnterForeground() {
         Director::getInstance()->startAnimation();
         //    ALMusicUtil::getInstrins()->resumeAllMusicAndEffect();
         NotificationCenter::getInstance()->postNotification(NND_AppWillEnterForeground);
+        
+        //恢复背景音乐
+        ALMusicUtil::getInstrins()->resumeSound(false);
     }
 }
 

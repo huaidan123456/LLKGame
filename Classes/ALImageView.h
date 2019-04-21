@@ -10,6 +10,7 @@
 #define ALImageView_h
 
 #include <stdio.h>
+#include <string>
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "network/HttpClient.h"
@@ -37,8 +38,9 @@ private:
     
     bool _isaExist;
     
-    
-    
+    //** 当前的url *//
+    std::string _imageUrl;
+    //** 默认的 imagePath *//
     std::string _defultImagePath;
 
 };

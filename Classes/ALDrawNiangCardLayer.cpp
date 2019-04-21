@@ -8,7 +8,7 @@
 
 #include "ALDrawNiangCardLayer.h"
 #include "ALDrawCardResultInfoModel.h"
-#include "StartGameScene.h"
+//#include "StartGameScene.h"
 #include "ALMusicUtil.h"
 #include "ALGameHelpUtil.h"
 
@@ -57,7 +57,10 @@ void ALDrawNiangCardLayer::initUI()
     lookBtn->addClickEventListener([&,this](Ref* ref){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         this->setVisible(false);
-        Director::getInstance()->replaceScene(StartGameScene::createWithShowCardInfo(_cardIndex-1));
+        if (_lookCardInfoCallback) {
+            _lookCardInfoCallback(_cardIndex);
+        }
+//        Director::getInstance()->replaceScene(StartGameScene::createWithShowCardInfo(_cardIndex-1));
     });
 
     
@@ -141,6 +144,14 @@ void ALDrawNiangCardLayer::showWithInfo(ALDrawCardResultInfoModel* model)
     
     this->setVisible(true);
     
+}
+
+/**
+ *  设置查看卡片详情的回调
+ */
+void ALDrawNiangCardLayer::setupLookCardInfoCallbakc(const alDrawCardResultLookCardInfoCallback& callback)
+{
+    _lookCardInfoCallback = callback;
 }
 
 

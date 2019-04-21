@@ -38,7 +38,7 @@ ALGameFriendCellNode::ALGameFriendCellNode()
 
 ALGameFriendCellNode::~ALGameFriendCellNode()
 {
-    CCLOG("ALGameFriendCellNode 析构  id== %d",_friendId);
+    CCLOG("~ALGameFriendCellNode 析构  id== %d",_friendId);
 }
 
 
@@ -94,8 +94,7 @@ void ALGameFriendCellNode::setupCellWithModel(ALGameFriendInfoModel *model)
     
     nameText->setString(model->getName());
     levelText->setString(StringUtils::format("Lv.%d",model->getLevel()));
-//    headView->loadWebImageTexture(model->getHeadUrl(),"images/afll_cell_headImage.png");
-    headView->loadTexture("images/icon_destroy_4.png");
+    headView->loadWebImageTexture(model->getHeadUrl(),"images/afll_cell_headImage.png");
     
     switch (_onlineState) {
             // 在线

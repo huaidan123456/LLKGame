@@ -38,7 +38,7 @@ MatchSuccessLayer::MatchSuccessLayer()
 
 MatchSuccessLayer::~MatchSuccessLayer()
 {
-    log("MatchSuccessLayer");
+    log("~MatchSuccessLayer");
 }
 
 

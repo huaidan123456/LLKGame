@@ -1,6 +1,7 @@
 obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o: \
  jni/../../../Classes/ALUserData.cpp jni/../../../Classes/ALUserData.h \
- jni/../../../Classes/ALUserInfoModel.h \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/ccConfig.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
@@ -19,7 +20,6 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../base/CCConsole.h \
  /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/CCStdC.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../platform/android/CCStdC-android.h \
@@ -347,11 +347,15 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALUserData.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCNotificationCenter.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h \
- /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
+ jni/../../../Classes/ALUserInfoModel.h \
+ jni/../../../Classes/ALGameFriendInfoModel.h
 
 jni/../../../Classes/ALUserData.h:
 
-jni/../../../Classes/ALUserInfoModel.h:
+/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
+
+/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../cocos2d.h:
 
@@ -388,8 +392,6 @@ jni/../../../Classes/ALUserInfoModel.h:
 /Users/allen/Allen_Library/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h:
 
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
-
-/Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 /Users/allen/Allen_Library/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
@@ -1046,3 +1048,7 @@ jni/../../../Classes/ALUserInfoModel.h:
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
+
+jni/../../../Classes/ALUserInfoModel.h:
+
+jni/../../../Classes/ALGameFriendInfoModel.h:

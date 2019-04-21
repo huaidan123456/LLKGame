@@ -56,6 +56,8 @@ private:
 
     cocos2d::ui::Button* friendsBtn;
     
+    cocos2d::ui::Button* soundSwitchBtn;
+    
     cocos2d::ui::Button* startMatchBtn;
     cocos2d::ui::Button* endMatchBtn;
     
@@ -79,6 +81,11 @@ private:
     
     //** 进入后台的时间戳 *//
     long _appEnterBackgroundTime;
+    //** 防止android锁屏时候两次进入后台 *//
+    bool _isEnableOfSetupBackgroundTime;
+    //** 匹配超时提示框是否已经显示 *//
+    bool _timeOutAlertVisible;
+    
     //** 匹配成功超时 *//
     bool _isTimeOutOfMatchSuccess;
     
@@ -105,11 +112,11 @@ private:
     
     void matchSuccessInfo(ALUserInfoModel* model);
     
+    
     /**
      *  进入自动匹配的游戏界面
      */
     void gotoRandomMatchGame(float delay);
-    
     
     /**
      *  更新用户信息
@@ -127,6 +134,17 @@ private:
     void refreshOnlineNumberObserverFunc(Ref* ref);
     
     /**
+     *  接收到好友的约战邀请
+     */
+    void receiveFriendFightInvitationObserverFunc(Ref* ref);
+    
+    /**
+     *  好友约战OK  准备进入游戏
+     */
+    void receiveGoToFriendFightGameObserverFunc(Ref* ref);
+    
+    
+    /**
      *  断开连接的操作
      */
     void disConnectObserverFunc(Ref* ref);
@@ -135,6 +153,7 @@ private:
      *  游戏进入后台
      */
     void appDidEnterBackgroundObserverFunc(Ref* ref);
+    
     /**
      *  游戏恢复前台
      */

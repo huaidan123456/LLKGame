@@ -9,17 +9,20 @@
 #include "ALImageView.h"
 #include "ALUserInfoModel.h"
 #include "ALMusicUtil.h"
+#include "ALNotificationNameDefine.h"
+#include "ALHelpTools.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
 
 #define DF_AGAL_invitee_SCHEDULE_CountDownTime  "DF_AGAL_invitee_SCHEDULE_CountDownTime"
 
+
 ALGameInviteeAlertLayer* ALGameInviteeAlertLayer::create()
 {
     ALGameInviteeAlertLayer* layer = new (std::nothrow)ALGameInviteeAlertLayer();
     if (layer && layer->init()) {
-        layer->initUI();
+        layer->baseInit();
         layer->autorelease();
         return layer;
     }else{
@@ -47,11 +50,32 @@ ALGameInviteeAlertLayer::ALGameInviteeAlertLayer()
 {
     
     _remainingTime = 10;
+    _appEnterBackgroundTime = 0;
+    _appBackgroundTime = 0;
 }
 
 ALGameInviteeAlertLayer::~ALGameInviteeAlertLayer()
 {
+    unscheduleAllCallbacks();
+    NotificationCenter::getInstance()->removeAllObservers(this);
+}
+
+void ALGameInviteeAlertLayer::baseInit()
+{
+    initUI();
+    registerNotification();
+}
+
+
+void ALGameInviteeAlertLayer::registerNotification()
+{
+    NotificationCenter::getInstance()->removeAllObservers(this);
     
+    //监听恢复到前台的操作
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameInviteeAlertLayer::appDidEnterBackgroundObserverFunc), NND_AppDidEnterBackground, NULL);
+    
+    //监听恢复到前台的操作
+    NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(ALGameInviteeAlertLayer::appWillEnterForegroundObserverFunc), NND_AppWillEnterForeground, NULL);
 }
 
 void ALGameInviteeAlertLayer::initUI()
@@ -98,18 +122,18 @@ void ALGameInviteeAlertLayer::initUI()
     agreeBtn->addClickEventListener([=](Ref* btn){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         if (_operationCallback) {
-            _operationCallback(true);
+            _operationCallback(true,_friendUId);
         }
-        hideAnimation->play("hideAnimation", false);
+        hideAlert();
     });
     
     refuseBtn = (Button*)boxBg->getChildByName("btn_refuse");
     refuseBtn->addClickEventListener([=](Ref* btn){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
         if (_operationCallback) {
-            _operationCallback(false);
+            _operationCallback(false,_friendUId);
         }
-        hideAnimation->play("hideAnimation", false);
+        hideAlert();
     });
     
     
@@ -151,6 +175,7 @@ void ALGameInviteeAlertLayer::layerDidAppear()
 void ALGameInviteeAlertLayer::layerDidDisappear()
 {
     this->unschedule(DF_AGAL_invitee_SCHEDULE_CountDownTime);
+    progress->stopAllActions();
     progress->setPercentage(100);
     _remainingTime = 10;
     remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
@@ -162,10 +187,21 @@ void ALGameInviteeAlertLayer::layerDidDisappear()
 
 void ALGameInviteeAlertLayer::showAlertWithUserInfo(ALUserInfoModel *model)
 {
+    _friendUId = model->getUid();
     headView->loadWebImageTexture(model->getHeadUrl(),"images/alertL_headImage.png");
     nameText->setString(model->getName());
     levelText->setString(StringUtils::format("Lv.%d",model->getLevel()));
     this->setVisible(true);
+}
+
+void ALGameInviteeAlertLayer::hideAlert()
+{
+//    hideAnimation->play("hideAnimation", false);
+    if (this->isVisible()) {
+        hideAnimation->play("hideAnimation", false);
+    }else{
+        this->setVisible(false);
+    }
 }
 
 
@@ -190,6 +226,81 @@ void ALGameInviteeAlertLayer::updateRemainingTime()
         _remainingTime--;
         remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
     }else{
-        hideAnimation->play("hideAnimation", false);
+        hideAlert();
     }
+}
+
+
+
+/**
+ *  alert 重新设置剩余时间
+ */
+void ALGameInviteeAlertLayer::resetRemainingTimeAction()
+{
+    if (this->isVisible()) {
+        this->unschedule(DF_AGAL_invitee_SCHEDULE_CountDownTime);
+        progress->stopAllActions();
+        _remainingTime = _remainingTime - _appBackgroundTime;
+        if (_remainingTime > 0) {
+            // 执行进入条逐渐减少的动画
+            progress->setPercentage(_remainingTime*10);
+            remainingTimeText->setString(StringUtils::format("%d",_remainingTime));
+            progress->runAction(ProgressTo::create(_remainingTime, 0));
+            this->schedule([=](float ft){
+                this->updateRemainingTime();
+            }, 1, _remainingTime, 0, DF_AGAL_invitee_SCHEDULE_CountDownTime);
+        }else{
+            hideAlert();
+        }
+
+    }
+    
+}
+
+
+
+
+/**
+ *  游戏进入后台
+ */
+void ALGameInviteeAlertLayer::appDidEnterBackgroundObserverFunc(Ref* ref)
+{
+    if (!(this->isVisible())) {
+        return;
+    }
+
+    if(_appEnterBackgroundTime == 0)
+    {
+        _appEnterBackgroundTime = ALHelpTools::getCurrentTime();
+    }
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+        if (showAnimation->isPlaying()) {
+        }
+        
+        if (hideAnimation->isPlaying())
+        {
+            hideAnimation->pause();
+            this->setVisible(false);
+        }
+    });
+}
+
+/**
+ *  游戏恢复前台
+ */
+void ALGameInviteeAlertLayer::appWillEnterForegroundObserverFunc(Ref* ref)
+{
+    if (!(this->isVisible())) {
+        return;
+    }
+    
+    if (_appEnterBackgroundTime == 0) {
+        return;
+    }
+    _appBackgroundTime = (int)(ALHelpTools::getCurrentTime() - _appEnterBackgroundTime);
+    _appEnterBackgroundTime = 0;
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread([&,this]()->void{
+        this->resetRemainingTimeAction();
+        _appBackgroundTime = 0;
+    });
 }

@@ -65,6 +65,66 @@ public:
     static void requestUserNiangCard();
     
     /**
+     *  请求好友列表
+     */
+    static void requestGameFriendList();
+    /**
+     *  申请约战
+     */
+    static void requestFightWithFriend(int friendId);
+    
+    /**
+     *  同意约战
+     */
+    static void sendAgreeFightInvite(int inviterId);
+    
+    /**
+     *  拒绝约战
+     */
+    static void sendRefuseFightInvite(int inviterId);
+    
+    /**
+     *  进入房间并且准备完毕
+     */
+    static void readyOfFriendFightGame();
+    
+    /**
+     *  好友对战时候 没消除一个向服务器发送消除
+     */
+    static void sendCleanIconOfFriendFight();
+    
+    /**
+     *  好友对战的时候  离开本局(中途离开)
+     */
+    static void sendLeaveRoomOfFriendFight();
+    
+    /**
+     *  好友对战结束后 发送再来一局
+     */
+    static void sendGameAgainOfFriendFight(int friendUid);
+    
+    /**
+     *  发送同意对方的再来一局
+     */
+    static void sendAgreeGameAgainOfFriendFight(int inviterId);
+    
+    /**
+     *  发送 对战结束  离开游戏
+     */
+    static void sendLeaveFriendFightGameOfGameOver(int friendUid);
+    
+    /**
+     *  好友对战中 断线重连机制
+     */
+    static void reconnectOfFriendFight(int uid,int roomId);
+    
+    /**
+     *  好友对战的游戏中  从后台回到前台给服务器发送到字段
+     */
+    static void backGameAfterEnterforeground(int roomId);
+
+    
+    /**
      *  发送随机匹配
      */
     static void sendRandomMatch();

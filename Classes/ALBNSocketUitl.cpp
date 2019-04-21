@@ -16,6 +16,8 @@
 #include "ALGameResultInfoModel.h"
 #include "ALDrawCardResultInfoModel.h"
 #include "ALNotificationNameDefine.h"
+#include "ALGameFriendInfoModel.h"
+
 
 
 #define SOCKET_ERROR -1
@@ -25,7 +27,11 @@
 
 HSocket ALBNSocketUitl::_socketHandle = 0;
 bool ALBNSocketUitl::_connectFlag = false;
+bool ALBNSocketUitl::_isOpenHeadThread = false;
 bool ALBNSocketUitl::_notificationSwitch = true;
+
+
+
 
 /**
  *  连接服务器
@@ -82,12 +88,12 @@ bool ALBNSocketUitl::connectServer(const char* m_ip,unsigned short m_port)
         return 0;
     }
     CCLOG("connect  OK!!!!");
-    _connectFlag = true;
-
-//    new std::thread(&ALBNSocketUitl::threadReceiveTask);
-    std::thread sthread(&ALBNSocketUitl::threadReceiveTask);
-    sthread.detach();
-    return true;
+    
+//    _connectFlag = true;
+//    // 接收
+//    std::thread sthread(&ALBNSocketUitl::threadReceiveTask);
+//    sthread.detach();
+//    return true;
     
     
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
@@ -174,13 +180,24 @@ bool ALBNSocketUitl::connectServer(const char* m_ip,unsigned short m_port)
 //    setsockopt(_socketHandle,SOL_SOCKET,SO_RCVTIMEO,(const char*)&timeout,sizeof(timeout));
     CCLOG("connect  OK!!!!");
     
-    _connectFlag = true;
-//    new std::thread(&ALBNSocketUitl::threadReceiveTask);
-    std::thread sthread(&ALBNSocketUitl::threadReceiveTask);
-    sthread.detach();
-    return true;
+//    _connectFlag = true;
+//    std::thread sthread(&ALBNSocketUitl::threadReceiveTask);
+//    sthread.detach();
+//    return true;
 
 #endif
+    
+    _connectFlag = true;
+    // 接收
+    std::thread sthread(&ALBNSocketUitl::threadReceiveTask);
+    sthread.detach();
+    // 心跳包
+    if (!_isOpenHeadThread) {
+        std::thread headThread(&ALBNSocketUitl::threadSendHeartbeat);
+        headThread.detach();
+    }
+    
+    return true;
 }
 
 bool ALBNSocketUitl::loginServer(const char *ip, unsigned short port, int uid)
@@ -196,10 +213,42 @@ bool ALBNSocketUitl::loginServer(const char *ip, unsigned short port, int uid)
     }
     // 发送链接失败通知
     if(_notificationSwitch){
-        cocos2d::NotificationCenter::getInstance()->postNotification(NND_Disconnect);
+        cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+            cocos2d::NotificationCenter::getInstance()->postNotification(NND_Disconnect);
+        });
     }
     
     return false;
+}
+
+
+
+/**
+ *  心跳包
+ */
+void* ALBNSocketUitl::threadSendHeartbeat()
+{
+    CCLOG("开启心跳线程 ====");
+    _isOpenHeadThread = true;
+    while (_connectFlag) {
+        struct timeval tv;
+        gettimeofday(&tv, NULL);
+        cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]{
+            struct timeval tv2;
+            gettimeofday(&tv2, NULL);
+            float intervalTime = (float)(tv2.tv_sec - tv.tv_sec) + ((float)(tv2.tv_usec - tv.tv_usec))/1000000.f;
+            if (intervalTime < 0.5f && _connectFlag) {
+                ALBNSocketUitl::sendString("<-jump->");
+                CCLOG("心跳包发送 ");
+            }
+        });
+        sleep(1);
+    }
+    
+    _isOpenHeadThread = false;
+    CCLOG("关闭心跳线程 ====");
+    
+    return 0;
 }
 
 
@@ -209,9 +258,10 @@ bool ALBNSocketUitl::loginServer(const char *ip, unsigned short port, int uid)
 void* ALBNSocketUitl::threadReceiveTask()
 {
     while (_connectFlag) {
-//        CCLOG("threadReceiveTask()!!!!!");
         char* data = receiveStr();
+        CCLOG("接收消息!!!!! === %s",data);
         //返回OK。则为连接成功。
+        
         if (strcmp(data, "<#OK#>") == 0)//返回一个确认。说明连接上了
         {
             CCLOG("connecting!!!!!");
@@ -239,8 +289,10 @@ void* ALBNSocketUitl::threadReceiveTask()
 
             delete [] name;
             delete [] headUrl;
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserInfo,NULL);
+            });
             
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserInfo,NULL);
         }
         // 刷新用户信息
         else if (strcmp(data, ALND_NF_REFRESH_USER_INFO) == 0)
@@ -256,23 +308,31 @@ void* ALBNSocketUitl::threadReceiveTask()
             ALUserData::userInfo->setQingDou(qingdouCount);
             ALUserData::qingDouCount = qingdouCount;
             CCLOG("更新用户信息");
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserInfo,NULL);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserInfo,NULL);
+            });
+            
         }
-        // 刷新用户信息
+        // 刷新用户轻豆数量
         else if (strcmp(data, ALND_NF_UPDATE_USER_QINGDOU) == 0)
         {
             int qingdouCount = receiveInt();
             ALUserData::qingDouCount = qingdouCount;
             ALUserData::userInfo->setQingDou(qingdouCount);
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserQingDouCount,NULL);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserQingDouCount,NULL);
+            });
+            
         }
         // 获取自动匹配角色的信息
         else if (strcmp(data, ALND_NF_GET_RANDOM_PLAYER) == 0)
         {
+            CCLOG("获取自动匹配的用户信息");
             int uid = receiveInt();
             char* name = receiveStr();
             char* headUrl = receiveStr();
             int level = receiveInt();
+            bool isConcern = receiveInt();
             ALPlayerData::difficultyLevel = receiveInt();//难易程度
             CCLOG("获取到的游戏难度 %d",ALPlayerData::difficultyLevel);
             // 接收电脑AI
@@ -284,13 +344,17 @@ void* ALBNSocketUitl::threadReceiveTask()
             ALPlayerData::opponentInfo->setName(name);
             ALPlayerData::opponentInfo->setHeadUrl(headUrl);
             ALPlayerData::opponentInfo->setLevel(level);
+            ALPlayerData::opponentInfo->setConcern(isConcern);
             CCLOG("名称 =%s",name);
             CCLOG("头像地址  %s",headUrl);
             
             delete [] name;
             delete [] headUrl;
             
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetRandomMatchUserInfo,NULL);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetRandomMatchUserInfo,NULL);
+            });
+            
             CCLOG("返回匹配信息");
             
         }
@@ -306,8 +370,11 @@ void* ALBNSocketUitl::threadReceiveTask()
                 int index = receiveInt()-1;
                 ALUserData::niangCard[index] = true;
             }
+            CCLOG("刷新娘卡  信息接收完毕");
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserNiangCard,NULL);
+            });
             
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshUserNiangCard,NULL);
         }
         // 获取自动匹配的游戏结果
         else if (strcmp(data, ALND_NF_GET_STANDALONE_GAME_RESULT) == 0)
@@ -326,39 +393,303 @@ void* ALBNSocketUitl::threadReceiveTask()
             ALUserData::userInfo->setQingDou(qingdouCount);
             ALUserData::qingDouCount = qingdouCount;
             
-            ALGameResultInfoModel* model = ALGameResultInfoModel::create();
-            model->gameResult = result;
-            model->addExp = addExp;
-            model->addQingdao = addQingDou;
-//            model->retain();
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetStandAloneGameResult,model);
-            CCLOG("返回游戏结果  %d  %d  %d",result,addExp,addQingDou);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([result,addExp,addQingDou]{
+                ALGameResultInfoModel* model = ALGameResultInfoModel::create();
+                model->gameResult = result;
+                model->addExp = addExp;
+                model->addQingdao = addQingDou;
+                model->retain();
+                CCLOG("返回游戏结果  %d  %d  %d",result,addExp,addQingDou);
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetStandAloneGameResult,model);
+            });
+            
         }// 接收抽奖奖励
         else if (strcmp(data, ALND_NF_DRAW_NIANING_CARD_AWARY) == 0)
         {
             CCLOG("抽卡回调");
-            auto model =  ALDrawCardResultInfoModel::create();
-            model->isGain = receiveInt();
-            model->cardIndex = receiveInt();
-            model->awardIndex = receiveInt();
-//            model->retain();
+            int isGain = receiveInt();
+            int cardIndex = receiveInt();
+            int awardIndex = receiveInt();
             
-            CCLOG("bnsocket抽卡详情   %d  %d  %d ",model->isGain,model->cardIndex,model->awardIndex);
             
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetDrawNiangCardResult, model);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([isGain,cardIndex,awardIndex]{
+                auto model =  ALDrawCardResultInfoModel::create();
+                model->isGain = isGain;
+                model->cardIndex = cardIndex;
+                model->awardIndex = awardIndex;
+                model->retain();
+                CCLOG("bnsocket抽卡详情   %d  %d  %d ",model->isGain,model->cardIndex,model->awardIndex);
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetDrawNiangCardResult, model);
+            });
+            
         }
         // 请求在线人数
         else if (strcmp(data, ALND_NF_REQUEST_ONLINE_NUMBER) == 0)
         {
             ALPlayerData::onLienNumber = receiveInt();
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshOnlineNumber);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshOnlineNumber);
+            });
+            
+            CCLOG("在线人数获取完毕");
         }
-        // 添加轻豆
-        else if (strcmp(data, ALND_NF_ADD_LIGHT_BEAN) == 0)
+        // 获取好友信息列表
+        else if (strcmp(data, ALND_NF_REFRESH_GAME_FRIENDS_LIST) == 0)
         {
+            CCLOG("获取好友信息列表");
+            int friendCount = receiveInt();
+            CCLOG("好友数量 = %d",friendCount);
+            for (int i = 0; i < friendCount; ++i)
+            {
+                int uid = receiveInt();
+                char* name = receiveStr();
+                char* headUrl = receiveStr();
+                int level = receiveInt();
+                int onlineState = receiveInt();
+                
+                auto model = ALGameFriendInfoModel::create();
+                model->setUid(uid);
+                model->setName(name);
+                model->setHeadUrl(headUrl);
+                model->setLevel(level);
+                model->setOnlineState(onlineState);
+                ALUserData::gameFriends.insert(model->getUid(), model);
+                
+                delete [] name;
+                delete [] headUrl;
+            }
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshGameFriendList);
+            });
             
         }
         
+        // 刷新好友在线情况
+        else if (strcmp(data, ALND_NF_REFRESH_GAME_FRIEND_ONLINE) == 0)
+        {
+            int friendCount = receiveInt();
+            CCLOG("数量 %d",friendCount);
+            for (int i = 0; i < friendCount; ++i) {
+                int fid = receiveInt();
+                int onlineState = receiveInt();
+                CCLOG("好友 %d   %d",fid,onlineState);
+                auto model = ALUserData::gameFriends.at(fid);
+                if (model) {
+                    model->setOnlineState(onlineState);
+                }
+            }
+            if (friendCount > 0) {
+                ALUserData::isRefreshFriendList = true;
+            }
+            
+//            cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefreshGameFriendList);
+
+        }
+        //被申请约战（给被约战的客户端发送） 做弹出框提示约战(如果在大厅界面时)
+        else if (strcmp(data, ALND_NF_RECEIVE_FIGHT_INVITE) == 0)
+        {
+            int uid = receiveInt();
+            char* name = receiveStr();
+            char* headUrl = receiveStr();
+            int level = receiveInt();
+            
+            ALUserInfoModel* model = ALUserInfoModel::create();
+            model->setUid(uid);
+            model->setName(name);
+            model->setHeadUrl(headUrl);
+            model->setLevel(level);
+            model->retain();
+
+            delete [] name;
+            delete [] headUrl;
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([model]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_InviteFightGameWithFriend,model);
+            });
+            
+        }
+        //同样给申请人返回（表示他已经成功给对方发信息并且自己也要进入等待对方同意的状态）
+        else if (strcmp(data, ALND_NF_RECEIVE_INVITE_SUCCESS_TO_WAIT) == 0)
+        {
+            
+        }
+        // 对方拒绝约战
+        else if (strcmp(data, ALND_NF_RECEIVE_REFUSE_FIGHT_INVITE) == 0)
+        {
+            CCLOG("拒绝约战");
+            int uid = receiveInt();
+            
+            
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([uid]{
+                cocos2d::String* uidStr = cocos2d::String::createWithFormat("%d",uid);
+                uidStr->retain();
+                CCLOG("%d  拒绝约战",uid);
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_RefuseInviteFlageGame,uidStr);
+            });
+        }
+        
+        //对方同意约战  //** 给双方返回游戏难度和房间号 *//
+        else if (strcmp(data, ALND_NF_RECEIVE_PK_GAME_INFO) == 0)
+        {
+            ALPlayerData::difficultyLevel = receiveInt();
+            ALPlayerData::roomIdOfPK = receiveInt();
+            int uid = receiveInt();
+            
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([uid]{
+                CCLOG("开始对战  对方id== %d",uid);
+                cocos2d::String* uidStr = cocos2d::String::createWithFormat("%d",uid);
+                uidStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_AgreeInviteFlageGame,uidStr);
+            });
+            
+        }
+        //** 双方准备完毕  游戏开始 *//
+        else if (strcmp(data, ALND_NF_FIGHT_PK_START_GAME) == 0)
+        {
+            ALPlayerData::isReadyOfFriendFightGame = true;
+        }
+        //** 接收当前游戏消除情况 服务器给客户端返回双方当前分数情况（两个玩家的得分情况）*//
+        else if (strcmp(data, ALND_NF_RECEIVE_FIGHT_PK_CURRENT_COUNT) == 0)
+        {
+            int uid1 = receiveInt();
+            int count1 = receiveInt();
+
+            int uid2 = receiveInt();
+            int count2 = receiveInt();
+
+            if (ALUserData::userInfo->getUid() == uid1) {
+                ALPlayerData::leftCleanCountOfPKGame = count1;
+                ALPlayerData::rightCleanCountOfPKGame = count2;
+            }else{
+                ALPlayerData::leftCleanCountOfPKGame = count2;
+                ALPlayerData::rightCleanCountOfPKGame = count1;
+            }
+
+//            int uid = receiveInt();
+//            int count = receiveInt();
+//
+//
+//
+//            if (ALUserData::userInfo->getUid() == uid) {
+//                ALPlayerData::leftCleanCountOfPKGame = count;
+//            }else{
+//                ALPlayerData::rightCleanCountOfPKGame = count;
+//            }
+
+        }
+        //** 接收到游戏结束 *//
+        else if (strcmp(data, ALND_NF_RECEIVE_FIGHT_PK_GAME_OVER) == 0)
+        {
+            bool result = receiveInt();
+            int level = receiveInt();
+            int currentExp = receiveInt();
+            int sumExp = receiveInt();
+            int qingdouCount = receiveInt();
+            int addExp = receiveInt();
+            int addQingDou = receiveInt();
+            
+            ALUserData::userInfo->setLevel(level);
+            ALUserData::userInfo->setCurrentEXP(currentExp);
+            ALUserData::userInfo->setSumExp(sumExp);
+            ALUserData::userInfo->setQingDou(qingdouCount);
+            ALUserData::qingDouCount = qingdouCount;
+            
+            
+            
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([result,addExp,addQingDou]{
+                ALGameResultInfoModel* model = ALGameResultInfoModel::create();
+                model->gameResult = result;
+                model->addExp = addExp;
+                model->addQingdao = addQingDou;
+                model->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_GetFriendFightGameResult,model);
+                CCLOG("返回游戏结果  %d  %d  %d",result,addExp,addQingDou);
+            });
+            
+        }
+        //** 接收 中途退出游戏 *//
+        else if (strcmp(data, ALND_NF_RECEIVE_FIGHT_PK_OPPONENT_LEAVE) == 0)
+        {
+//            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendLeaveInTheGame);
+//            });
+            
+        }
+        //** 接收 再来一局的邀请 *//
+        else if (strcmp(data, ALND_NF_PK_RECEIVE_GAME_AGAIN_INVITE) == 0)
+        {
+            CCLOG("接收到再来一局的对战");
+            int uid = receiveInt();
+            char* name = receiveStr();
+            char* headUrl = receiveStr();
+            int level = receiveInt();
+            
+            delete [] name;
+            delete [] headUrl;
+            
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([uid]{
+                cocos2d::String* uidStr = cocos2d::String::createWithFormat("%d",uid);
+                uidStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendFightGameAgainInvitation,uidStr);
+            });
+            
+            
+        }//** 再来一局游戏游戏开始 *//
+        else if (strcmp(data, ALND_NF_PK_GAME_AGAIN_READY_START) == 0)
+        {
+            ALPlayerData::difficultyLevel = receiveInt();
+            ALPlayerData::roomIdOfPK = receiveInt();
+            int uid = receiveInt();
+            
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([uid]{
+                CCLOG("再来一局  对方id== %d",uid);
+                cocos2d::String* uidStr = cocos2d::String::createWithFormat("%d",uid);
+                uidStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendFightGameAgainReadyStart,uidStr);
+            });
+        }
+        
+        //** 接收 游戏结束后  对方离开 *//
+        else if (strcmp(data, ALND_NF_PK_OPPOSITE_LEAVE_GAME) == 0)
+        {
+            int uid = receiveInt();
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([uid]{
+                CCLOG("接收 游戏结束后  对方离开 = %d",uid);
+                cocos2d::String* uidStr = cocos2d::String::createWithFormat("%d",uid);
+                uidStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendFightOppositeLeave,uidStr);
+            });
+        }
+        
+        // PK 游戏超时
+        else if (strcmp(data, ALND_NF_FIGHT_PK_GAME_ROOM_TIME_OUT) == 0)
+        {
+            int roomId = receiveInt();
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([roomId]{
+                cocos2d::String* roomIdStr = cocos2d::String::createWithFormat("%d",roomId);
+                roomIdStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendFightRoomTimeOut,roomIdStr);
+            });
+            
+        }
+            
+        // 添加轻豆
+        else if (strcmp(data, ALND_NF_ADD_LIGHT_BEAN) == 0)
+        {
+            CCLOG("添加轻豆");
+        }
+        
+        
+        // 重连结果返回给客户端 重连结果 *// //int   是否重连成功 （0 不成功【原因包括房间消失，其他错误等】   1重连成功）
+        else if (strcmp(data, ALND_NF_FIGHT_PK_RECONNECT_REQUEST) == 0)
+        {
+            int code = receiveInt();
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([code]{
+                CCLOG("重连结果 code= %d",code);
+                cocos2d::String* codeStr = cocos2d::String::createWithFormat("%d",code);
+                codeStr->retain();
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_ReceiveFriendFightReconnectResult,codeStr);
+            });
+        }
         
         delete [] data;
         
@@ -367,9 +698,7 @@ void* ALBNSocketUitl::threadReceiveTask()
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     ::closesocket(_socketHandle);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-    if (_connectFlag) {
-        ::close(_socketHandle);
-    }
+    ::close(_socketHandle);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     close(_socketHandle);
     
@@ -405,7 +734,10 @@ void ALBNSocketUitl::closeConnect()
     // 断开连接发送通知
     if (_connectFlag) {
         if(_notificationSwitch){
-            cocos2d::NotificationCenter::getInstance()->postNotification(NND_Disconnect);
+            cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([]{
+                cocos2d::NotificationCenter::getInstance()->postNotification(NND_Disconnect);
+            });
+            
         }
     }
     _connectFlag = false;
@@ -461,6 +793,7 @@ void ALBNSocketUitl::sendStr(const char* str, int len)
 void ALBNSocketUitl::sendString(const char* str)
 {
     sendStr(str,strlen(str));
+//    CCLOG("发送的字符串  == %s",str);
 }
 
 char* ALBNSocketUitl::receiveBytes(int len)
@@ -474,7 +807,6 @@ char* ALBNSocketUitl::receiveBytes(int len)
         char* result = new char[len];
         int status = 0;
         status = recv(_socketHandle, result, len, 0);
-        
         
         if (status == 0)
         {
@@ -540,7 +872,6 @@ char* ALBNSocketUitl::receiveBytes(int len)
     }else{
         return "close";
     }
-    
 }
 
 int ALBNSocketUitl::receiveInt()
@@ -558,7 +889,10 @@ int ALBNSocketUitl::receiveInt()
     if (strcmp(a, "close") != 0) {
         delete[] a;
     }
+//    CCLOG("接收int  == %d",ri);
     return ri;
+    
+    
 }
 
 float ALBNSocketUitl::receiveFloat()
@@ -589,6 +923,7 @@ char* ALBNSocketUitl::receiveStr()
     if (strcmp(a, "close") != 0) {
         delete[] a;
     }
+//    CCLOG("接收字符串  == %s",result);
     
     return result;
 }

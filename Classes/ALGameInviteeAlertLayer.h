@@ -18,7 +18,7 @@ class ALUserInfoModel;
 class ALGameInviteeAlertLayer:public ALBaseLayer
 {
 public:
-    typedef std::function<void (bool isAgree)> alAlertOperationCallback;
+    typedef std::function<void (bool isAgree,int uid)> alAlertOperationCallback;
     typedef std::function<void ()> alAlertDisappearCallback;
     
     
@@ -31,7 +31,11 @@ public:
     ALGameInviteeAlertLayer();
     ~ALGameInviteeAlertLayer();
     
+    void baseInit();
+    
     void initUI();
+    
+    void registerNotification();
     
     virtual void layerWillAppear() override;
     
@@ -40,6 +44,7 @@ public:
     virtual void layerDidDisappear() override;
     
     void showAlertWithUserInfo(ALUserInfoModel* model);
+    void hideAlert();
     
     void setupOperationCallback(const alAlertOperationCallback& callback);
     
@@ -72,15 +77,41 @@ private:
     
     //** 剩余时间 *//
     int _remainingTime;
+    //** 进入后台的时间戳 *//
+    long _appEnterBackgroundTime;
+    //** 在后台停留的时间 *//
+    int _appBackgroundTime;
     //** 操作回调 *//
     alAlertOperationCallback _operationCallback;
     //** 隐藏回调 *//
     alAlertDisappearCallback _disappearCallback;
     
+    
+    //** 好友uid *//
+    int _friendUId;
+    
     /**
      *  更新剩余时间
      */
     void updateRemainingTime();
+    
+    /**
+     *  alert 重新设置剩余时间
+     */
+    void resetRemainingTimeAction();
+    
+    
+    
+    
+    /**
+     *  游戏进入后台
+     */
+    void appDidEnterBackgroundObserverFunc(Ref* ref);
+    
+    /**
+     *  游戏恢复前台
+     */
+    void appWillEnterForegroundObserverFunc(Ref* ref);
 };
 
 #endif /* ALGameInviteeAlertLayer_h */

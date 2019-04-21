@@ -41,7 +41,13 @@
 static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[ALGameHelpUtilOfIOS getInstance] setupLoginUidOfGame:1];
+    
+#if TARGET_IPHONE_SIMULATOR
+    [[ALGameHelpUtilOfIOS getInstance] setupLoginUidOfGame:345970];//345970    104127
+#else
+    [[ALGameHelpUtilOfIOS getInstance] setupLoginUidOfGame:117];//345970    104127  117
+#endif
+
     
     [[ALGameHelpUtilOfIOS getInstance] setupShareOfGameDrawCardCallback:^(int cardIndex) {
         NSLog(@"adsfasdfasd----游戏内的分享  第%d卡片",cardIndex);

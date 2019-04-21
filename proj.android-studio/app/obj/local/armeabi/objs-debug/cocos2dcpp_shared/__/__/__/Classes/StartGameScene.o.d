@@ -384,6 +384,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../ui/UILayoutComponent.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
  jni/../../../Classes/MatchSuccessLayer.h \
+ jni/../../../Classes/ALBaseLayer.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocosStudioExport.h \
@@ -461,7 +462,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CCBoneNode.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/ActionTimeline/CSLoader.h \
  jni/../../../Classes/GameScene.h jni/../../../Classes/IconSprite.h \
- jni/../../../Classes/GameConfig.h jni/../../../Classes/GamePKScene.h \
+ jni/../../../Classes/ALGameConfig.h jni/../../../Classes/GamePKScene.h \
  jni/../../../Classes/ALNetControl.h jni/../../../Classes/ALNetDefine.h \
  jni/../../../Classes/ALUserInfoModel.h jni/../../../Classes/ALUserData.h \
  jni/../../../Classes/ALPlayerData.h \
@@ -469,9 +470,19 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/StartGameScene.o
  jni/../../../Classes/ALNotificationNameDefine.h \
  jni/../../../Classes/ALAlertUtil.h \
  jni/../../../Classes/ALNiangCardInfoLayer.h \
- jni/../../../Classes/ALBaseLayer.h \
  jni/../../../Classes/ALGameRulesLayer.h \
- jni/../../../Classes/ALMusicUtil.h jni/../../../Classes/ALGameHelpUtil.h
+ jni/../../../Classes/ALGameFriendsListLayer.h \
+ jni/../../../Classes/ALGameFriendCellNode.h \
+ jni/../../../Classes/ALMusicUtil.h jni/../../../Classes/ALGameHelpUtil.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpClient.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpRequest.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpResponse.h \
+ /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpCookie.h \
+ jni/../../../Classes/ALNetworkHelper.h \
+ jni/../../../Classes/ALHelpTools.h \
+ jni/../../../Classes/ALGameInviteeAlertLayer.h \
+ jni/../../../Classes/ALGameFriendInfoModel.h \
+ jni/../../../Classes/ALWebImageUtil.h
 
 jni/../../../Classes/StartGameScene.h:
 
@@ -1241,6 +1252,8 @@ jni/../../../Classes/StartGameScene.h:
 
 jni/../../../Classes/MatchSuccessLayer.h:
 
+jni/../../../Classes/ALBaseLayer.h:
+
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CocoStudio.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/editor-support/cocostudio/../cocostudio/CCActionFrame.h:
@@ -1397,7 +1410,7 @@ jni/../../../Classes/GameScene.h:
 
 jni/../../../Classes/IconSprite.h:
 
-jni/../../../Classes/GameConfig.h:
+jni/../../../Classes/ALGameConfig.h:
 
 jni/../../../Classes/GamePKScene.h:
 
@@ -1419,10 +1432,30 @@ jni/../../../Classes/ALAlertUtil.h:
 
 jni/../../../Classes/ALNiangCardInfoLayer.h:
 
-jni/../../../Classes/ALBaseLayer.h:
-
 jni/../../../Classes/ALGameRulesLayer.h:
+
+jni/../../../Classes/ALGameFriendsListLayer.h:
+
+jni/../../../Classes/ALGameFriendCellNode.h:
 
 jni/../../../Classes/ALMusicUtil.h:
 
 jni/../../../Classes/ALGameHelpUtil.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpClient.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpRequest.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpResponse.h:
+
+/Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../network/HttpCookie.h:
+
+jni/../../../Classes/ALNetworkHelper.h:
+
+jni/../../../Classes/ALHelpTools.h:
+
+jni/../../../Classes/ALGameInviteeAlertLayer.h:
+
+jni/../../../Classes/ALGameFriendInfoModel.h:
+
+jni/../../../Classes/ALWebImageUtil.h:

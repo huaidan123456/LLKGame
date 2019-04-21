@@ -58,7 +58,6 @@
 		9F42FCA9200773B500BAF309 /* file in Resources */ = {isa = PBXBuildFile; fileRef = 9F42FCA8200773B500BAF309 /* file */; };
 		9F42FCB22007771B00BAF309 /* ALGameFriendsListLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F42FCB02007771B00BAF309 /* ALGameFriendsListLayer.cpp */; };
 		9F42FCB52007775E00BAF309 /* ALGameFriendCellNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F42FCB32007775E00BAF309 /* ALGameFriendCellNode.cpp */; };
-		9F42FCB8200777E600BAF309 /* ALGameFriendInfoModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F42FCB6200777E600BAF309 /* ALGameFriendInfoModel.cpp */; };
 		9F44E7431FF1E79B0004ED66 /* ALGameHelpUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E7411FF1E79B0004ED66 /* ALGameHelpUtil.cpp */; };
 		9F44E7461FF1E7D50004ED66 /* ALGameHelpUtilForAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E7441FF1E7D50004ED66 /* ALGameHelpUtilForAndroid.cpp */; };
 		9F44E7521FF1FFCA0004ED66 /* ALGameHelpSetupUtilForIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E74F1FF1FFCA0004ED66 /* ALGameHelpSetupUtilForIos.mm */; };
@@ -103,6 +102,8 @@
 		9FC5BD5F1FEE58530032146B /* ALNiangCardInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5BD5D1FEE58530032146B /* ALNiangCardInfoLayer.cpp */; };
 		9FC5BD621FEE66D50032146B /* ALNiangCardInfoShowLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5BD601FEE66D50032146B /* ALNiangCardInfoShowLayer.cpp */; };
 		9FE3FC431FFE2F510053BDFB /* ALWebImageUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3FC411FFE2F510053BDFB /* ALWebImageUtil.cpp */; };
+		9FF5BF652012EC320030976A /* ALGameFriendInfoModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5BF632012EC310030976A /* ALGameFriendInfoModel.cpp */; };
+		9FF5BF6D201596380030976A /* ALMD5Encode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5BF6B201596380030976A /* ALMD5Encode.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -204,8 +205,6 @@
 		9F42FCB12007771B00BAF309 /* ALGameFriendsListLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALGameFriendsListLayer.h; sourceTree = "<group>"; };
 		9F42FCB32007775E00BAF309 /* ALGameFriendCellNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameFriendCellNode.cpp; sourceTree = "<group>"; };
 		9F42FCB42007775E00BAF309 /* ALGameFriendCellNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALGameFriendCellNode.h; sourceTree = "<group>"; };
-		9F42FCB6200777E600BAF309 /* ALGameFriendInfoModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ALGameFriendInfoModel.cpp; path = GameDelegate/ALGameFriendInfoModel.cpp; sourceTree = "<group>"; };
-		9F42FCB7200777E600BAF309 /* ALGameFriendInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALGameFriendInfoModel.h; path = GameDelegate/ALGameFriendInfoModel.h; sourceTree = "<group>"; };
 		9F44E7411FF1E79B0004ED66 /* ALGameHelpUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameHelpUtil.cpp; sourceTree = "<group>"; };
 		9F44E7421FF1E79B0004ED66 /* ALGameHelpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGameHelpUtil.h; sourceTree = "<group>"; };
 		9F44E7441FF1E7D50004ED66 /* ALGameHelpUtilForAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameHelpUtilForAndroid.cpp; sourceTree = "<group>"; };
@@ -248,6 +247,7 @@
 		9F71D80820061E0C00FA98E3 /* ALGameChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGameChecker.h; sourceTree = "<group>"; };
 		9F71D80F20061EF900FA98E3 /* ALGameAppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameAppDelegate.cpp; sourceTree = "<group>"; };
 		9F71D81020061EF900FA98E3 /* ALGameAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGameAppDelegate.h; sourceTree = "<group>"; };
+		9F721E1A2260A1B90058567A /* ALDebugMNG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALDebugMNG.h; sourceTree = "<group>"; };
 		9F863BC61FECEF7D002B5BD7 /* ALDrawNiangCardLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALDrawNiangCardLayer.cpp; sourceTree = "<group>"; };
 		9F863BC71FECEF7D002B5BD7 /* ALDrawNiangCardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALDrawNiangCardLayer.h; sourceTree = "<group>"; };
 		9F863BC91FED0709002B5BD7 /* ALDrawCardResultInfoModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALDrawCardResultInfoModel.cpp; sourceTree = "<group>"; };
@@ -288,6 +288,10 @@
 		9FC5BD611FEE66D50032146B /* ALNiangCardInfoShowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALNiangCardInfoShowLayer.h; sourceTree = "<group>"; };
 		9FE3FC411FFE2F510053BDFB /* ALWebImageUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALWebImageUtil.cpp; sourceTree = "<group>"; };
 		9FE3FC451FFE30010053BDFB /* ALWebImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALWebImageUtil.h; sourceTree = "<group>"; };
+		9FF5BF632012EC310030976A /* ALGameFriendInfoModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameFriendInfoModel.cpp; sourceTree = "<group>"; };
+		9FF5BF642012EC310030976A /* ALGameFriendInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALGameFriendInfoModel.h; sourceTree = "<group>"; };
+		9FF5BF6B201596380030976A /* ALMD5Encode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ALMD5Encode.cpp; sourceTree = "<group>"; };
+		9FF5BF6C201596380030976A /* ALMD5Encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALMD5Encode.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -451,6 +455,7 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				9F64689720036F2B00562E82 /* ALGameConfig.cpp */,
 				9F64689820036F2B00562E82 /* ALGameConfig.h */,
+				9F721E1A2260A1B90058567A /* ALDebugMNG.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -629,6 +634,7 @@
 		9F863BCD1FED2A17002B5BD7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9FF5BF6A201596290030976A /* MD5 */,
 				9F44E7401FF1E7700004ED66 /* 接口 */,
 				9F863BCE1FED2A33002B5BD7 /* ALAlertUtil.cpp */,
 				9F863BCF1FED2A33002B5BD7 /* ALAlertUtil.h */,
@@ -662,8 +668,8 @@
 				9F9A7A141FEA7AB9000C39C3 /* ALGameResultInfoModel.h */,
 				9F863BC91FED0709002B5BD7 /* ALDrawCardResultInfoModel.cpp */,
 				9F863BCA1FED0709002B5BD7 /* ALDrawCardResultInfoModel.h */,
-				9F42FCB6200777E600BAF309 /* ALGameFriendInfoModel.cpp */,
-				9F42FCB7200777E600BAF309 /* ALGameFriendInfoModel.h */,
+				9FF5BF632012EC310030976A /* ALGameFriendInfoModel.cpp */,
+				9FF5BF642012EC310030976A /* ALGameFriendInfoModel.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -682,6 +688,15 @@
 				9F71D7FF2006190000FA98E3 /* ALNetworkHelper.h */,
 			);
 			name = network;
+			sourceTree = "<group>";
+		};
+		9FF5BF6A201596290030976A /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				9FF5BF6B201596380030976A /* ALMD5Encode.cpp */,
+				9FF5BF6C201596380030976A /* ALMD5Encode.h */,
+			);
+			name = MD5;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,7 +747,8 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = R76K9B3FJQ;
+						DevelopmentTeam = 6UZHD68R54;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -847,6 +863,7 @@
 				9FAA70691FE3ABC10012C07A /* ALImageView.cpp in Sources */,
 				9FAA706C1FE3B8C20012C07A /* GamePKScene.cpp in Sources */,
 				9FC5BD621FEE66D50032146B /* ALNiangCardInfoShowLayer.cpp in Sources */,
+				9FF5BF6D201596380030976A /* ALMD5Encode.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				9FBC40E01FE78AFD004F6501 /* ALBNSocketUitl.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -872,7 +889,7 @@
 				9F863BD01FED2A33002B5BD7 /* ALAlertUtil.cpp in Sources */,
 				9FC252E21FDF91E700675D39 /* IconSprite.cpp in Sources */,
 				9FAA70731FE3DDA20012C07A /* MatchSuccessLayer.cpp in Sources */,
-				9F42FCB8200777E600BAF309 /* ALGameFriendInfoModel.cpp in Sources */,
+				9FF5BF652012EC320030976A /* ALGameFriendInfoModel.cpp in Sources */,
 				9F42FCB52007775E00BAF309 /* ALGameFriendCellNode.cpp in Sources */,
 				9F6130BA1FE92025006B4F96 /* ReadyGameLayer.cpp in Sources */,
 				9F71D7FD200616D900FA98E3 /* ALNetworkHelperForIos.mm in Sources */,
@@ -912,8 +929,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = R76K9B3FJQ;
+				DEVELOPMENT_TEAM = 6UZHD68R54;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -934,11 +952,13 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daylight.aylrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.LLKGameTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -953,8 +973,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = R76K9B3FJQ;
+				DEVELOPMENT_TEAM = 6UZHD68R54;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -973,11 +994,13 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.daylight.aylrs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Allen.LLKGameTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

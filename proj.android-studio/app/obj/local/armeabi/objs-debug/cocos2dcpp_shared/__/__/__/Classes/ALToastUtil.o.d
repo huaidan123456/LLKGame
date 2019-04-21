@@ -364,7 +364,7 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/__/Classes/ALToastUtil.o: \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCString.h \
  /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../../Classes/GameConfig.h
+ jni/../../../Classes/ALGameConfig.h
 
 jni/../../../Classes/ALToastUtil.h:
 
@@ -1096,4 +1096,4 @@ jni/../../../Classes/ALToastUtil.h:
 
 /Users/allen/Allen/cocos2dxProject/LLKGame/proj.android-studio/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
-jni/../../../Classes/GameConfig.h:
+jni/../../../Classes/ALGameConfig.h:

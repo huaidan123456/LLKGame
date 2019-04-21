@@ -76,9 +76,13 @@ void GameOverLayer::initUI()
     concernBtn = (Button*)box->getChildByName("btn_concern");
     concernBtn->addClickEventListener([&,this](Ref* ref){
         ALMusicUtil::getInstrins()->playEffic(ALMusicUtil::GameEffic::BtnClickEffic);
-        if (!_isConcern) {
-            _isConcern = true;
-            ((Button*)ref)->setEnabled(false);
+//        if (!_isConcern) {
+//            _isConcern = true;
+//            ((Button*)ref)->setEnabled(false);
+//        }
+        this->setupConcernState(true);
+        if (_concernCallback) {
+            _concernCallback(_opponentUid);
         }
     });
     
@@ -260,6 +264,16 @@ void GameOverLayer::setupQingDouCount(int count)
 }
 
 
+/**
+ *  设置关注状态
+ */
+void GameOverLayer::setupConcernState(bool isConcerState)
+{
+    _isConcern = isConcerState;
+    concernBtn->setEnabled(!_isConcern);
+}
+
+
 
 
 void GameOverLayer::setupGameAgainState(int state)
@@ -330,4 +344,9 @@ void GameOverLayer::setupGameAgainCallback(const alGameOverBtnClickCallback &cal
 void GameOverLayer::setupGameOverShowCompleteCallback(const alGameOverShowCompleteCallback &callback)
 {
     _showCompleteCallback = callback;
+}
+
+void GameOverLayer::setupConcernCallback(const alGameOverConcernCallback& callback)
+{
+    _concernCallback = callback;
 }

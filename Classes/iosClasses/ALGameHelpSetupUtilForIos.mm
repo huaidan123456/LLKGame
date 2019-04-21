@@ -92,7 +92,7 @@ static RootViewController* _controller;
             ALGameConfig::designType = DF_DESIGN_TYPE_h1560;
             
         }else{
-            glview->setDesignResolutionSize(720,1280, ResolutionPolicy::NO_BORDER);
+            glview->setDesignResolutionSize(720,1280, ResolutionPolicy::SHOW_ALL);
             ALGameConfig::designType = DF_DESIGN_TYPE_h1280;
         }
 #else

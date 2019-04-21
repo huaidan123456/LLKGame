@@ -18,7 +18,7 @@
 bool ALNetworkHelper::checkCurrentNetworkState()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-
+    return true;
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     return ALNetworkHelperForIos::checkCurrentNetworkState();
 #endif

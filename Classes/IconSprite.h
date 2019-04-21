@@ -68,6 +68,9 @@ private:
     //** 是否已经销毁 *//
     bool _isDestroy;
     
+    //** 销毁动作完成的回调 *//
+    IconDestroyFinishCallback _destroyFinishCallback;
+    
     
     
     /**

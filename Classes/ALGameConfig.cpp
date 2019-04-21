@@ -8,3 +8,4 @@
 #include "ALGameConfig.h"
 
 int ALGameConfig::designType = DF_DESIGN_TYPE_h1280;
+int ALGameConfig::DebugType = GAME_NO_NETWORK;

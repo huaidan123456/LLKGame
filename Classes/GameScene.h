@@ -45,6 +45,8 @@ private:
     
     cocos2d::ui::Button* backBtn;
     
+    cocos2d::ui::Button* soundSwitchBtn;
+    
     cocos2d::Sprite* progressLeft;
     cocos2d::Sprite* progressRight;
     
@@ -67,6 +69,10 @@ private:
     //** 抽到卡片的界面 *//
     ALDrawNiangCardLayer* drawCardLayer;
     
+    
+    
+    //** 离开游戏的限制 (如果是false 可以点击，如果是true 则不可以点击)*//
+    bool _isLeaveGame = false;
     
     //** 第一个icon的 x坐标 *//
     float df_startPointX;

@@ -33,6 +33,16 @@ public:
     
     //** 好友列表 *//
     static cocos2d::Map<int,ALGameFriendInfoModel*> gameFriends;
+    //** 是否刷新好友列表 *//
+    static bool isRefreshFriendList;
+    
+    
+    
+    
+    /**
+     *  重置数据
+     */
+    static void resetUserData();
     
     
 };

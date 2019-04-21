@@ -18,7 +18,7 @@ public:
     typedef std::function<void()> alAlertOkCallback;
     typedef std::function<void(bool isOk)> alAlertOkCallback2;
     /**
-     *  制作并且弹出离开游戏的弹框
+     *  弹出并且弹出离开游戏的弹框
      */
     static void makeAlertOfExitGame(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
     
@@ -35,6 +35,27 @@ public:
     static void makeAlertOfConnectTimeOut(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
     
     /**
+     *  弹出匹配超时提示框
+     */
+    static void makeAlertOfMatchFail(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
+    
+    
+    /**
+     *  游戏中断的提示框
+     */
+    static void makeAlertOfGameInterruption(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
+    
+    /**
+     *  游戏已经结束的提示框  alalert_box_gameFightOverAndLeavel.png
+     */
+    static void makeAlertOfFriendFightGameOver(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
+    
+    /**
+     *  好友PK 游戏超时  
+     */
+    static void makeAlertOfFriendFightRoomTimeOut(cocos2d::Node* parentNode,const alAlertOkCallback& callback);
+    
+    /**
      *  弹出轻豆不足的提示框  
      */
     static void makeAlertOfDontHaveEnoughQingDou(cocos2d::Node* parentNode);
@@ -42,6 +63,18 @@ public:
     
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+private:
+    static void makeAlertWithTitleName(const char* pathName,cocos2d::Node* parentNode,const alAlertOkCallback& callback);
    
 };
 

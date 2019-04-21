@@ -8,6 +8,8 @@
 #ifndef ALGameConfig_h
 #define ALGameConfig_h
 
+#include "ALDebugMNG.h"
+
 // 设计图尺寸
 #define DF_DesignSize Director::getInstance()->getOpenGLView()->getDesignResolutionSize()
 // 屏幕分辨率
@@ -30,6 +32,8 @@ public:
     //** 设计图的类型 *//
     static int designType;
     
+    //** debug 模式 *//
+    static int DebugType;
     
 };
 
